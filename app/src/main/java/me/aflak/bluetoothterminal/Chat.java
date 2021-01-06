@@ -124,6 +124,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
 
                 valor_calibrado = valor_calibrado/10;
 
+                Display(Float.toString(valor_calibrado));
                 b.send("fim_calibracao");
             }
         });
@@ -224,13 +225,11 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         if (codigo.equals("CAL")) {
             Float valor = Float.parseFloat(message.substring(3));
             valor_atual_calibracao = valor;
+            Display(message);
         }
         else {
             Display(message);
         }
-
-
-
     }
     @Override
     public void onError(String message) {
