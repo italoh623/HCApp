@@ -45,7 +45,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     int i = 0;
 
     // Calibração
-    float valores_calibracao[];
+    float valores_calibracao[]=new float[10];
     int contador_calibracao = 0;
     float valor_calibrado = 0;
     float valor_atual_calibracao = 0;
@@ -64,7 +64,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         iniciar_movimento = (Button) findViewById(R.id.iniciar_movimento);
         finalizar_calibracao = (Button) findViewById(R.id.finalizar_calibracao);
        // scrollView = (ScrollView) findViewById(R.id.scrollView);
-
+        finalizar_calibracao.setVisibility(View.INVISIBLE);
 //        text.setMovementMethod(new ScrollingMovementMethod());
         iniciar.setEnabled(false);
         finalizar.setEnabled(false);
@@ -93,19 +93,39 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                for(int i=0;i<10;i++){
+                    valores_calibracao[i]=-1;
+                }
                 // String msg = message.getText().toString();
                 String msg = "calibracao";
                // message.setText("");
                 b.send(msg);
               //  Display("You: " + msg);
+
             }
         });
         finalizar_movimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                valores_calibracao[contador_calibracao] = valor_atual_calibracao;
-                b.send("proxima_calibracao");
-            }
+                if(contador_calibracao<=10){
+                    //Display(Integer.toString(contador_calibracao));
+                    valores_calibracao[contador_calibracao-1] = valor_atual_calibracao;
+                    System.out.println("Valor de calibracao["+(contador_calibracao-1)+"] ="+valor_atual_calibracao);
+                    b.send("proxima_calibracao");
+                }else if(contador_calibracao==11){
+                        valores_calibracao[0] = valor_atual_calibracao;
+                    finalizar_movimento.setVisibility(View.INVISIBLE);
+                    iniciar_movimento.setVisibility(View.INVISIBLE);
+                    finalizar_calibracao.setVisibility(View.VISIBLE);
+                    b.send("proxima_calibracao");
+                    }else{
+
+                    }
+                }
+
+
+
         });
         iniciar_movimento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,14 +138,18 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
             @Override
             public void onClick(View v) {
                 valor_calibrado = 0;
+                System.out.print("Valores: ");
                 for(int i=0; i<10; i++) {
+                    System.out.print(valores_calibracao[i]+" ");
                     valor_calibrado += valores_calibracao[i];
                 }
-
+                System.out.println();
                 valor_calibrado = valor_calibrado/10;
 
-                Display(Float.toString(valor_calibrado));
                 b.send("fim_calibracao");
+                Display(Float.toString(valor_calibrado));
+                finalizar_calibracao.setVisibility(View.INVISIBLE);
+
             }
         });
 
@@ -219,11 +243,13 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
 
     @Override
     public void onMessage(String message) {
+
         String codigo = message.substring(0, 3);
         System.out.println(codigo);
 
         if (codigo.equals("CAL")) {
             Float valor = Float.parseFloat(message.substring(3));
+            System.out.println(valor);
             valor_atual_calibracao = valor;
             Display(message);
         }
