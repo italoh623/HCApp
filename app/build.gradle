@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 29
+    buildToolsVersion '30.0.2'
 
     defaultConfig {
         applicationId "me.aflak.bluetoothterminal"
-        minSdkVersion 21
-        targetSdkVersion 23
+        minSdkVersion 23
+        targetSdkVersion 29
         versionCode 12
         versionName "3.5"
     }
@@ -20,10 +20,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.2.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
 
-    compile 'me.aflak.libraries:bluetooth:1.2.4'
-    compile 'me.aflak.libraries:pulltorefresh:1.0'
-    compile 'com.android.support:design:23.2.1'
+    implementation 'me.aflak.libraries:bluetooth:1.2.4'
+    implementation 'me.aflak.libraries:pulltorefresh:1.0'
+    implementation 'com.android.support:design:28.0.0'
 }
