@@ -5,4 +5,11 @@
     <string name="action_settings">Settings</string>
 
     <color name="bg">#C0C0C0</color>
+    <string name="title_activity_navegacao">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="text_operacao">Operação</string>
+    <string name="text_home">Home</string>
+    <string name="text_calibracao">Calibração</string>
 </resources>

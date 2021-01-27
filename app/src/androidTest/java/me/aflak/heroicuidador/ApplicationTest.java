@@ -1,4 +1,4 @@
-package me.aflak.bluetoothterminal;
+package me.aflak.heroicuidador;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

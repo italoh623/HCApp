@@ -1,4 +1,4 @@
-package me.aflak.bluetoothterminal;
+package me.aflak.heroicuidador.activity;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.aflak.bluetooth.Bluetooth;
+import me.aflak.heroicuidador.R;
 import me.aflak.pulltorefresh.PullToRefresh;
 
 /**
@@ -55,7 +56,7 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(Select.this, Chat.class);
+                Intent i = new Intent(Select.this, HomeActivity.class);
                 i.putExtra("pos", position);
                 if(registered) {
                     unregisterReceiver(mReceiver);

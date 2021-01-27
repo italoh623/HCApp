@@ -1,4 +1,4 @@
-package me.aflak.bluetoothterminal;
+package me.aflak.heroicuidador.activity;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.aflak.bluetooth.Bluetooth;
+import me.aflak.heroicuidador.R;
 
 /**
  * Created by Omar on 08/05/2016.

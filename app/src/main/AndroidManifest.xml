@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.aflak.bluetoothterminal" >
+    package="me.aflak.heroicuidador">
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.CalibracaoActivity"></activity>
+        <activity android:name=".activity.OperacaoActivity" />
         <activity
-            android:name=".Chat"
+            android:name=".activity.HomeActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".Scan"
+            android:name=".activity.Scan"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".Select"
+            android:name=".activity.Select"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

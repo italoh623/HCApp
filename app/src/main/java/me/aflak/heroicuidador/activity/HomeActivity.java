@@ -1,4 +1,4 @@
-package me.aflak.bluetoothterminal;
+package me.aflak.heroicuidador.activity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -11,20 +11,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import me.aflak.bluetooth.Bluetooth;
+import me.aflak.heroicuidador.R;
 
-public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCallback {
+public class HomeActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
     private String name;
     private Bluetooth b;
    // private EditText message;
@@ -35,6 +34,8 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     private Button finalizar_calibracao;
     private TextView text;
     private TextView textView_movimento;
+    private TextView textViewOperacao;
+    private TextView textViewCalibracao;
     private ScrollView scrollView;
     private boolean registered = false;
     int soma = 0;
@@ -55,12 +56,15 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        textViewOperacao = findViewById(R.id.textViewOperacao);
+        textViewCalibracao = findViewById(R.id.textViewCalibracao);
+
         text = (TextView) findViewById(R.id.text);
         textView_movimento = (TextView) findViewById(R.id.textView_movimento);
        // message = (EditText) findViewById(R.id.message);
         iniciar = (Button) findViewById(R.id.iniciar);
         finalizar = (Button) findViewById(R.id.finalizar);
-        finalizar_movimento = (Button) findViewById(R.id.finalizar_movimento);
+        finalizar_movimento = (Button) findViewById(R.id.iniciar_movimento);
         iniciar_movimento = (Button) findViewById(R.id.iniciar_movimento);
         finalizar_calibracao = (Button) findViewById(R.id.finalizar_calibracao);
        // scrollView = (ScrollView) findViewById(R.id.scrollView);
@@ -68,6 +72,25 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
 //        text.setMovementMethod(new ScrollingMovementMethod());
         iniciar.setEnabled(false);
         finalizar.setEnabled(false);
+
+
+        // Navegação
+
+        textViewCalibracao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CalibracaoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        textViewOperacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OperacaoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         b = new Bluetooth(this);
         b.enableBluetooth();
@@ -79,6 +102,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         Toast.makeText(getApplicationContext(),  "Conectando...", Toast.LENGTH_SHORT).show();
       //  Display("Connecting...");
         b.connectToDevice(b.getPairedDevices().get(pos));
+
 
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -287,7 +311,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
 
             if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
                 final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
-                Intent intent1 = new Intent(Chat.this, Select.class);
+                Intent intent1 = new Intent(HomeActivity.this, Select.class);
 
                 switch (state) {
                     case BluetoothAdapter.STATE_OFF:
