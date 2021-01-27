@@ -12,4 +12,8 @@
     <string name="text_operacao">Operação</string>
     <string name="text_home">Home</string>
     <string name="text_calibracao">Calibração</string>
+    <string name="text_resetar">Resetar</string>
+    <string name="text_iniciar_movimento">Iniciar Movimento</string>
+    <string name="text_finalizar_movimento">Finalizar Movimento</string>
+    <string name="text_finalizar_calibracao">Finalizar Calibração</string>
 </resources>
