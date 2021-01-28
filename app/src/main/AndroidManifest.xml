@@ -7,6 +7,7 @@
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.ApresentacaoCalibracaoActivity"></activity>
         <activity
             android:name=".activity.CalibracaoActivity"
             android:screenOrientation="portrait" />

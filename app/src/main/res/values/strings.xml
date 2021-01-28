@@ -16,4 +16,7 @@
     <string name="text_iniciar_movimento">Iniciar Movimento</string>
     <string name="text_finalizar_movimento">Finalizar Movimento</string>
     <string name="text_finalizar_calibracao">Finalizar Calibração</string>
+    <string name="text_calibrar">Calibrar</string>
+    <string name="text_calibracao_apresentacao">A calibração server para conhecermos melhor o seu corpo e mehorarmos a precisão da análise dos movimentos realizados.</string>
+    <string name="text_descricao_exercicio">Imagem de uma mulher se exercitando</string>
 </resources>

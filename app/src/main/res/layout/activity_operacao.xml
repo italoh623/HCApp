@@ -9,7 +9,7 @@
     tools:context=".activity.OperacaoActivity">
 
     <TextView
-        android:id="@+id/textView_movimento2"
+        android:id="@+id/textViewLogsComunicacao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -41,13 +41,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonResetar"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/vermelho"
         android:paddingLeft="32dp"
+        android:paddingTop="16dp"
         android:paddingRight="32dp"
+        android:paddingBottom="16dp"
         android:text="@string/text_resetar"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
