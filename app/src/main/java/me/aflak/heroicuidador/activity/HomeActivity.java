@@ -75,7 +75,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
                 b.removeCommunicationCallback();
                 b.disconnect();
 
-                Intent intent = new Intent(getApplicationContext(), ApresentacaoCalibracaoActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CalibracaoActivity.class);
                 intent.putExtra("pos", position);
 
                 startActivity(intent);

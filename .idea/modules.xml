@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HCApp.iml" filepath="$PROJECT_DIR$/.idea/modules/HCApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/HCApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/HCApp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HCApp.iml" filepath="$PROJECT_DIR$/.idea/modules/HCApp.iml" group="HCApp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="HCApp/app" />
     </modules>
   </component>
 </project>
