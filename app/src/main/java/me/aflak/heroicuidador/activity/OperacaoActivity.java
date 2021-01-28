@@ -71,6 +71,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                b.send("operacao");
             }
         });
     }
