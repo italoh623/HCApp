@@ -33,6 +33,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     // Navegação
     private TextView textViewOperacao;
     private TextView textViewCalibracao;
+    private TextView textViewLogs;
 
 
     @Override
@@ -42,6 +43,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
         textViewOperacao = findViewById(R.id.textViewOperacao);
         textViewCalibracao = findViewById(R.id.textViewCalibracao);
+        textViewLogs = findViewById(R.id.textViewLogs);
 
         text = findViewById(R.id.text);
 
@@ -137,8 +139,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                //text.append(s + "\n");
-                //scrollView.fullScroll(View.FOCUS_DOWN);
+                textViewLogs.setText(s);
             }
         });
     }
@@ -174,6 +175,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     @Override
     public void onMessage(String message) {
         // Troca de mensagem
+        Display(message);
     }
 
     @Override
