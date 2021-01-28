@@ -161,6 +161,14 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
         Display("Connecting again...");
         b.connectToDevice(device);
     }
+    @Override
+    public void onBackPressed() {
+        b.removeCommunicationCallback();
+        b.disconnect();
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     public void onMessage(String message) {
