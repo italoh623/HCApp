@@ -24,32 +24,18 @@ import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
 
 public class HomeActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
+
+    // Bluetooth
     private String name;
     private Bluetooth b;
-   // private EditText message;
-    private Button iniciar;
-    private Button finalizar;
-    private Button finalizar_movimento;
-    private Button iniciar_movimento;
-    private Button finalizar_calibracao;
+
     private TextView text;
-    private TextView textView_movimento;
+
+    // Navegação
     private TextView textViewOperacao;
     private TextView textViewCalibracao;
-    private ScrollView scrollView;
-    private boolean registered = false;
-    int soma = 0;
-    int valor_inicial = 0;
-    int valor_final = 0;
-    double media = 0;
-    int contador = 0;
-    int i = 0;
 
-    // Calibração
-    float valores_calibracao[]=new float[10];
-    int contador_calibracao = 0;
-    float valor_calibrado = 0;
-    float valor_atual_calibracao = 0;
+    private boolean registered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,19 +45,26 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         textViewOperacao = findViewById(R.id.textViewOperacao);
         textViewCalibracao = findViewById(R.id.textViewCalibracao);
 
-        text = (TextView) findViewById(R.id.text);
-        textView_movimento = (TextView) findViewById(R.id.textView_movimento);
-       // message = (EditText) findViewById(R.id.message);
-        iniciar = (Button) findViewById(R.id.iniciar);
-        finalizar = (Button) findViewById(R.id.finalizar);
-        finalizar_movimento = (Button) findViewById(R.id.iniciar_movimento);
-        iniciar_movimento = (Button) findViewById(R.id.iniciar_movimento);
-        finalizar_calibracao = (Button) findViewById(R.id.finalizar_calibracao);
-       // scrollView = (ScrollView) findViewById(R.id.scrollView);
-        finalizar_calibracao.setVisibility(View.INVISIBLE);
-//        text.setMovementMethod(new ScrollingMovementMethod());
-        iniciar.setEnabled(false);
-        finalizar.setEnabled(false);
+        text = findViewById(R.id.text);
+
+
+        // Bluetooth
+
+        b = new Bluetooth(this);
+        b.enableBluetooth();
+
+        b.setCommunicationCallback(this);
+
+        final int position = getIntent().getExtras().getInt("pos");
+        name = b.getPairedDevices().get(position).getName();
+
+        Toast.makeText(getApplicationContext(),  "Conectando...", Toast.LENGTH_SHORT).show();
+        //  Display("Connecting...");
+        b.connectToDevice(b.getPairedDevices().get(position));
+
+        IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+        registerReceiver(mReceiver, filter);
+        registered = true;
 
 
         // Navegação
@@ -80,6 +73,8 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CalibracaoActivity.class);
+                intent.putExtra("pos", position);
+
                 startActivity(intent);
             }
         });
@@ -88,99 +83,12 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), OperacaoActivity.class);
+                intent.putExtra("pos", position);
+
                 startActivity(intent);
             }
         });
 
-        b = new Bluetooth(this);
-        b.enableBluetooth();
-
-        b.setCommunicationCallback(this);
-
-        int pos = getIntent().getExtras().getInt("pos");
-        name = b.getPairedDevices().get(pos).getName();
-        Toast.makeText(getApplicationContext(),  "Conectando...", Toast.LENGTH_SHORT).show();
-      //  Display("Connecting...");
-        b.connectToDevice(b.getPairedDevices().get(pos));
-
-
-        iniciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // String msg = message.getText().toString();
-                String msg = "operacao";
-               // message.setText("");
-                b.send(msg);
-               // Display("You: " + msg);
-            }
-        });
-        finalizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                for(int i=0;i<10;i++){
-                    valores_calibracao[i]=-1;
-                }
-                // String msg = message.getText().toString();
-                String msg = "calibracao";
-               // message.setText("");
-                b.send(msg);
-              //  Display("You: " + msg);
-
-            }
-        });
-        finalizar_movimento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(contador_calibracao<=10){
-                    //Display(Integer.toString(contador_calibracao));
-                    valores_calibracao[contador_calibracao-1] = valor_atual_calibracao;
-                    System.out.println("Valor de calibracao["+(contador_calibracao-1)+"] ="+valor_atual_calibracao);
-                    b.send("proxima_calibracao");
-                }else if(contador_calibracao==11){
-                        valores_calibracao[0] = valor_atual_calibracao;
-                    finalizar_movimento.setVisibility(View.INVISIBLE);
-                    iniciar_movimento.setVisibility(View.INVISIBLE);
-                    finalizar_calibracao.setVisibility(View.VISIBLE);
-                    b.send("proxima_calibracao");
-                    }else{
-
-                    }
-                }
-
-
-
-        });
-        iniciar_movimento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                contador_calibracao++;
-                b.send("iniciar_calibracao");
-            }
-        });
-        finalizar_calibracao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                valor_calibrado = 0;
-                System.out.print("Valores: ");
-                for(int i=0; i<10; i++) {
-                    System.out.print(valores_calibracao[i]+" ");
-                    valor_calibrado += valores_calibracao[i];
-                }
-                System.out.println();
-                valor_calibrado = valor_calibrado/10;
-
-                b.send("fim_calibracao");
-                Display(Float.toString(valor_calibrado));
-                finalizar_calibracao.setVisibility(View.INVISIBLE);
-
-            }
-        });
-
-
-        IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-        registerReceiver(mReceiver, filter);
-        registered = true;
     }
 
     @Override
@@ -231,7 +139,6 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                textView_movimento.setText(s);
                 //text.append(s + "\n");
                 //scrollView.fullScroll(View.FOCUS_DOWN);
             }
@@ -241,23 +148,24 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     @Override
     public void onConnect(BluetoothDevice device) {
        // Display("Conectado " + device.getName() + " - " + device.getAddress());
-       // Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
 
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                iniciar.setEnabled(true);
-                finalizar.setEnabled(true);
             }
         });
     }
-    public void onBackPressed(){
+
+    @Override
+    public void onBackPressed() {
         b.removeCommunicationCallback();
         b.disconnect();
         Intent intent = new Intent(this, Select.class);
         startActivity(intent);
         finish();
     }
+
     @Override
     public void onDisconnect(BluetoothDevice device, String message) {
         Display("Disconnected!");
@@ -267,20 +175,9 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
     @Override
     public void onMessage(String message) {
-
-        String codigo = message.substring(0, 3);
-        System.out.println(codigo);
-
-        if (codigo.equals("CAL")) {
-            Float valor = Float.parseFloat(message.substring(3));
-            System.out.println(valor);
-            valor_atual_calibracao = valor;
-            Display(message);
-        }
-        else {
-            Display(message);
-        }
+        // Troca de mensagem
     }
+
     @Override
     public void onError(String message) {
         Display("Error: "+message);
@@ -317,7 +214,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
                     case BluetoothAdapter.STATE_OFF:
                         if(registered) {
                             unregisterReceiver(mReceiver);
-                            registered=false;
+                            registered = false;
                         }
                         startActivity(intent1);
                         finish();
@@ -325,7 +222,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
                     case BluetoothAdapter.STATE_TURNING_OFF:
                         if(registered) {
                             unregisterReceiver(mReceiver);
-                            registered=false;
+                            registered = false;
                         }
                         startActivity(intent1);
                         finish();
