@@ -49,7 +49,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
     @Override
     public void onConnect(BluetoothDevice device) {
         Display("Conectado " + device.getName() + " - " + device.getAddress());
-        Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
 
         this.runOnUiThread(new Runnable() {
             @Override

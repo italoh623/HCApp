@@ -46,7 +46,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
         name = b.getPairedDevices().get(position).getName();
 
         Toast.makeText(getApplicationContext(),  "Conectando...", Toast.LENGTH_SHORT).show();
-        //  Display("Connecting...");
+        Display("Connecting...");
         b.connectToDevice(b.getPairedDevices().get(position));
 
         IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
@@ -66,7 +66,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
     @Override
     public void onConnect(BluetoothDevice device) {
         Display("Conectado " + device.getName() + " - " + device.getAddress());
-        Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
 
         this.runOnUiThread(new Runnable() {
             @Override
