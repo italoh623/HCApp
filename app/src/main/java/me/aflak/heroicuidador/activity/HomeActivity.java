@@ -72,6 +72,9 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         textViewCalibracao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                b.removeCommunicationCallback();
+                b.disconnect();
+
                 Intent intent = new Intent(getApplicationContext(), ApresentacaoCalibracaoActivity.class);
                 intent.putExtra("pos", position);
 
@@ -82,6 +85,9 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         textViewOperacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                b.removeCommunicationCallback();
+                b.disconnect();
+
                 Intent intent = new Intent(getApplicationContext(), OperacaoActivity.class);
                 intent.putExtra("pos", position);
 
