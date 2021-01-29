@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/settings_input_composite/baseline_settings_input_composite_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/check_box/baseline_check_box_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="0c2a43" />
-                            <entry key="outputName" value="ic_calibracao_48" />
+                            <entry key="color" value="c4c4c4" />
+                            <entry key="outputName" value="ic_check_box_marcado_24" />
                           </map>
                         </option>
                       </PersistentState>

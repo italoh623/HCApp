@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
+import me.aflak.heroicuidador.adapter.RotinaAdapter;
 
 public class HomeActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
 
@@ -28,12 +31,12 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     private Bluetooth b;
     private boolean registered = false;
 
-    private TextView text;
+    private RecyclerView recyclerView;
 
     // Navegação
     private TextView textViewOperacao;
     private TextView textViewCalibracao;
-    private TextView textViewLogs;
+//    private TextView textViewLogs;
 
 
     @Override
@@ -43,9 +46,9 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
         textViewOperacao = findViewById(R.id.textViewOperacao);
         textViewCalibracao = findViewById(R.id.textViewCalibracao);
-        textViewLogs = findViewById(R.id.textViewLogs);
+//        textViewLogs = findViewById(R.id.textViewLogs);
 
-        text = findViewById(R.id.text);
+        recyclerView = findViewById(R.id.recyclerView);
 
 
         // Bluetooth
@@ -94,6 +97,14 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
                 startActivity(intent);
             }
         });
+
+        // RecyclerView Layout
+
+        RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        RotinaAdapter adapter = new RotinaAdapter();
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -145,7 +156,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                textViewLogs.setText(s);
+//                textViewLogs.setText(s);
             }
         });
     }
