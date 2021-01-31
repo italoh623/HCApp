@@ -188,6 +188,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                b.send("operacao");
             }
         });
     }
