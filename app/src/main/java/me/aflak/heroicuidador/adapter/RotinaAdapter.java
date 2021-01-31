@@ -46,10 +46,10 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
             myViewHolder.buttonCheck.setBackgroundResource(R.drawable.ic_check_box_desmarcada_24);
         }
 
-        if (atividade.isMovimentoCorreto() == null || atividade.isMovimentoCorreto() == true) {
-            myViewHolder.buttonAlerta.setBackground(null);
+        if (!atividade.isMovimentoCorreto()) {
+            myViewHolder.buttonAlerta.setVisibility(View.INVISIBLE);
         } else {
-            myViewHolder.buttonAlerta.setBackgroundResource(R.drawable.ic_alerta_movimento_24);
+            myViewHolder.buttonAlerta.setVisibility(View.VISIBLE);
         }
 
     }

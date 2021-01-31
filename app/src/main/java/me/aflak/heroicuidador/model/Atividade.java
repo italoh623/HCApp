@@ -4,8 +4,8 @@ public class Atividade {
 
     private String horario;
     private String nome;
-    private Boolean concluida;
-    private Boolean movimentoCorreto;
+    private boolean concluida;
+    private boolean movimentoCorreto;
 
     public Atividade() {
         this.concluida = false;
@@ -35,19 +35,19 @@ public class Atividade {
         this.nome = nome;
     }
 
-    public Boolean isConcluida() {
+    public boolean isConcluida() {
         return concluida;
     }
 
-    public void setConcluida(Boolean concluida) {
+    public void setConcluida(boolean concluida) {
         this.concluida = concluida;
     }
 
-    public Boolean isMovimentoCorreto() {
+    public boolean isMovimentoCorreto() {
         return movimentoCorreto;
     }
 
-    public void setMovimentoCorreto(Boolean movimentoCorreto) {
+    public void setMovimentoCorreto(boolean movimentoCorreto) {
         this.movimentoCorreto = movimentoCorreto;
     }
 }
