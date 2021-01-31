@@ -1,7 +1,5 @@
 # Herói Cuiador
-Aplicativo voltado para auxiliar o cuidador de idosos no seu trabalho e no seu auto cuidado
+Application designed to assist the caregiver of the elderly in their work and in their self care
 
 # Bluetooth library
-Projeto desenvolvido a partir da biblioteca:
-
-https://github.com/omaflak/Bluetooth-Library
+Project developed from the library: [Bluetooth-Library](https://github.com/omaflak/Bluetooth-Library)
