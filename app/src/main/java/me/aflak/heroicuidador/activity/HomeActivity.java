@@ -20,9 +20,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
 import me.aflak.heroicuidador.adapter.RotinaAdapter;
+import me.aflak.heroicuidador.model.Atividade;
 
 public class HomeActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
 
@@ -37,6 +41,9 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     private TextView textViewOperacao;
     private TextView textViewCalibracao;
 //    private TextView textViewLogs;
+
+    // Lista de atividades
+    private List<Atividade> atividades;
 
 
     @Override
@@ -103,7 +110,10 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        RotinaAdapter adapter = new RotinaAdapter();
+        atividades = new ArrayList<>();
+        this.prepararAtividades();
+
+        RotinaAdapter adapter = new RotinaAdapter(atividades);
         recyclerView.setAdapter(adapter);
 
     }
@@ -117,40 +127,29 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        return true;
+    public void prepararAtividades() {
+        Atividade atividade = new Atividade("8:00","Banho");
+        this.atividades.add(atividade);
+
+        atividade = new Atividade("9:00","Tomar Café");
+        this.atividades.add(atividade);
+
+        atividade = new Atividade("10:00","Caminha");
+        this.atividades.add(atividade);
+
+        atividade = new Atividade("12:00","Almoço");
+        this.atividades.add(atividade);
+
+        atividade = new Atividade("14:00","Dormir");
+        this.atividades.add(atividade);
+
+        atividade = new Atividade("18:00","Jantar");
+        this.atividades.add(atividade);
+
+        atividade = new Atividade("20:00","Dormir");
+        this.atividades.add(atividade);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.close:
-                b.removeCommunicationCallback();
-                b.disconnect();
-                Intent intent = new Intent(this, Select.class);
-                startActivity(intent);
-                finish();
-                return true;
-
-            case R.id.rate:
-                Uri uri = Uri.parse("market://details?id=" + this.getPackageName());
-                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-                goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                try {
-                    startActivity(goToMarket);
-                } catch (ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://play.google.com/store/apps/details?id=" + this.getPackageName())));
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     public void Display(final String s) {
         this.runOnUiThread(new Runnable() {

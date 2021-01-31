@@ -9,10 +9,18 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import me.aflak.heroicuidador.R;
+import me.aflak.heroicuidador.model.Atividade;
 
 public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHolder> {
+
+    private List<Atividade> listaAtividades;
+
+    public RotinaAdapter(List<Atividade> listaAtividades) {
+        this.listaAtividades = listaAtividades;
+    }
 
     @NonNull
     @Override
@@ -27,13 +35,28 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
 
-        myViewHolder.textViewNome.setText("Nome da Atividade");
-        myViewHolder.textViewHora.setText("10:00");
+        Atividade atividade = listaAtividades.get(i);
+
+        myViewHolder.textViewNome.setText(atividade.getNome());
+        myViewHolder.textViewHora.setText(atividade.getHorario());
+
+        if (atividade.isConcluida()) {
+            myViewHolder.buttonCheck.setBackgroundResource(R.drawable.ic_check_box_marcado_24);
+        } else {
+            myViewHolder.buttonCheck.setBackgroundResource(R.drawable.ic_check_box_desmarcada_24);
+        }
+
+        if (atividade.isMovimentoCorreto() == null || atividade.isMovimentoCorreto() == true) {
+            myViewHolder.buttonAlerta.setBackground(null);
+        } else {
+            myViewHolder.buttonAlerta.setBackgroundResource(R.drawable.ic_alerta_movimento_24);
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return 6;
+        return listaAtividades.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

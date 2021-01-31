@@ -116,6 +116,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        System.out.println("Tentando conectar");
                         b.connectToDevice(device);
                     }
                 }, 2000);
