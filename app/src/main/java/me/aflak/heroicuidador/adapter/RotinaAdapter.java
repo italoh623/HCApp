@@ -33,9 +33,9 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, int i) {
 
-        Atividade atividade = listaAtividades.get(i);
+        final Atividade atividade = listaAtividades.get(i);
 
         myViewHolder.textViewNome.setText(atividade.getNome());
         myViewHolder.textViewHora.setText(atividade.getHorario());
@@ -51,6 +51,23 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
         } else {
             myViewHolder.buttonAlerta.setVisibility(View.VISIBLE);
         }
+
+        myViewHolder.buttonCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (atividade.isConcluida()) {
+
+                    myViewHolder.buttonCheck.setBackgroundResource(R.drawable.ic_check_box_desmarcada_24);
+                    atividade.setConcluida(false);
+
+                } else {
+
+                    myViewHolder.buttonCheck.setBackgroundResource(R.drawable.ic_check_box_marcado_24);
+                    atividade.setConcluida(true);
+                    
+                }
+            }
+        });
 
     }
 
@@ -80,21 +97,7 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
 
             realizada = false;
 
-            buttonCheck.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (realizada) {
 
-                        buttonCheck.setBackgroundResource(R.drawable.ic_check_box_desmarcada_24);
-
-                        realizada = false;
-                    } else {
-                        buttonCheck.setBackgroundResource(R.drawable.ic_check_box_marcado_24);
-
-                        realizada = true;
-                    }
-                }
-            });
         }
 
     }

@@ -1,6 +1,6 @@
 package me.aflak.heroicuidador.model;
 
-public class Atividade {
+public class Atividade implements Comparable<Atividade> {
 
     private String horario;
     private String nome;
@@ -49,5 +49,10 @@ public class Atividade {
 
     public void setMovimentoCorreto(boolean movimentoCorreto) {
         this.movimentoCorreto = movimentoCorreto;
+    }
+
+    @Override
+    public int compareTo(Atividade obj) {
+        return this.horario.compareTo(obj.getHorario());
     }
 }

@@ -8,8 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,10 +19,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import me.aflak.bluetooth.Bluetooth;
@@ -36,6 +41,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     private boolean registered = false;
 
     private RecyclerView recyclerView;
+    private Button buttonAddAtividade;
 
     // Navegação
     private TextView textViewOperacao;
@@ -46,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     private List<Atividade> atividades;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +63,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 //        textViewLogs = findViewById(R.id.textViewLogs);
 
         recyclerView = findViewById(R.id.recyclerView);
+        buttonAddAtividade = findViewById(R.id.buttonAddAtividade);
 
 
         // Bluetooth
@@ -105,6 +113,17 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
             }
         });
 
+        buttonAddAtividade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                atividades.add(new Atividade("10:00","Caminha"));
+                Collections.sort(atividades);
+
+                RotinaAdapter adapter = new RotinaAdapter(atividades);
+                recyclerView.setAdapter(adapter);
+            }
+        });
+
         // RecyclerView Layout
 
         RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(this);
@@ -112,6 +131,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
         atividades = new ArrayList<>();
         this.prepararAtividades();
+        Collections.sort(atividades);
 
         RotinaAdapter adapter = new RotinaAdapter(atividades);
         recyclerView.setAdapter(adapter);
