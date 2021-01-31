@@ -9,14 +9,14 @@ public class Atividade implements Comparable<Atividade> {
 
     public Atividade() {
         this.concluida = false;
-        this.movimentoCorreto = false;
+        this.movimentoCorreto = true;
     }
 
     public Atividade(String horario, String nome) {
         this.horario = horario;
         this.nome = nome;
         this.concluida = false;
-        this.movimentoCorreto = false;
+        this.movimentoCorreto = true;
     }
 
     public String getHorario() {

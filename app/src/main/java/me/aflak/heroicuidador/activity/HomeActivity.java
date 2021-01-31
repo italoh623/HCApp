@@ -23,9 +23,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import me.aflak.bluetooth.Bluetooth;
@@ -84,7 +87,6 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         registerReceiver(mReceiver, filter);
         registered = true;
 
-
         // Navegação
 
         textViewCalibracao.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +118,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         buttonAddAtividade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                atividades.add(new Atividade("10:00","Caminha"));
+                atividades.add(new Atividade("20:00","Caminha"));
                 Collections.sort(atividades);
 
                 RotinaAdapter adapter = new RotinaAdapter(atividades);
@@ -163,10 +165,10 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         atividade = new Atividade("14:00","Dormir");
         this.atividades.add(atividade);
 
-        atividade = new Atividade("18:00","Jantar");
+        atividade = new Atividade("19:57","Jantar");
         this.atividades.add(atividade);
 
-        atividade = new Atividade("20:00","Dormir");
+        atividade = new Atividade("19:58","Dormir");
         this.atividades.add(atividade);
     }
 
@@ -210,9 +212,51 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     }
 
     @Override
-    public void onMessage(String message) {
+    public void onMessage(final String message) {
+
         // Troca de mensagem
-        Display(message);
+
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        Date date = new Date();
+        String dataStr = dateFormat.format(date).toString();
+
+//        Display(date.getHours() + ":" + date.getMinutes() + message);
+
+        String codigo = message.substring(0, 3);
+
+        if (codigo.equals("MOV")) {
+            String movimento = message.substring(3);
+            System.out.println(movimento);
+
+            if (movimento.equals("incorreto")) {
+
+                for(Atividade atividade : atividades){
+                    if (atividade.getHorario().equals(dataStr)) {
+
+                        atividade.setConcluida(true);
+                        atividade.setMovimentoCorreto(false);
+
+                        runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+
+                                // Stuff that updates the UI
+                                RotinaAdapter adapter = new RotinaAdapter(atividades);
+                                recyclerView.setAdapter(adapter);
+                            }
+                        });
+
+                    }
+                }
+            }
+        } else {
+            Display(message);
+        }
+
+
+
+
     }
 
     @Override

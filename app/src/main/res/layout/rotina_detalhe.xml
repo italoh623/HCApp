@@ -62,6 +62,7 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/ic_alerta_movimento_24"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6"
                 app:layout_constraintHorizontal_bias="0.5"

@@ -47,8 +47,6 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
         }
 
         if (!atividade.isMovimentoCorreto()) {
-            myViewHolder.buttonAlerta.setVisibility(View.INVISIBLE);
-        } else {
             myViewHolder.buttonAlerta.setVisibility(View.VISIBLE);
         }
 
@@ -94,9 +92,6 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
             textViewNome = itemView.findViewById(R.id.textViewNome);
             buttonCheck = itemView.findViewById(R.id.buttonCheck);
             buttonAlerta = itemView.findViewById(R.id.buttonAlerta);
-
-            realizada = false;
-
 
         }
 
