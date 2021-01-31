@@ -154,7 +154,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         atividade = new Atividade("9:00","Tomar Café");
         this.atividades.add(atividade);
 
-        atividade = new Atividade("10:00","Caminha");
+        atividade = new Atividade("10:00","Caminhar");
         this.atividades.add(atividade);
 
         atividade = new Atividade("12:00","Almoço");
@@ -216,12 +216,12 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
     @Override
     public void onError(String message) {
-        Display("Error: "+message);
+        Display("Error: " + message);
     }
 
     @Override
     public void onConnectError(final BluetoothDevice device, String message) {
-        Display("Error: "+message);
+        Display("Error: " + message);
         Display("Trying again in 3 sec.");
         runOnUiThread(new Runnable() {
             @Override

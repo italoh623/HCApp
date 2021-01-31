@@ -87,8 +87,14 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
     public void onBackPressed() {
         b.removeCommunicationCallback();
         b.disconnect();
+
+        unregisterReceiver(mReceiver);
+
         Intent intent = new Intent(this, HomeActivity.class);
+        int position = getIntent().getExtras().getInt("pos");
+        intent.putExtra("pos", position);
         startActivity(intent);
+
         finish();
     }
 

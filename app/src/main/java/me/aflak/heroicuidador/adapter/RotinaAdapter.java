@@ -64,7 +64,7 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
 
                     myViewHolder.buttonCheck.setBackgroundResource(R.drawable.ic_check_box_marcado_24);
                     atividade.setConcluida(true);
-                    
+
                 }
             }
         });
