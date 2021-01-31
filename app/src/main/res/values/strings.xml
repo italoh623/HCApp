@@ -19,4 +19,7 @@
     <string name="text_calibrar">Calibrar</string>
     <string name="text_calibracao_apresentacao">A calibração server para conhecermos melhor o seu corpo e mehorarmos a precisão da análise dos movimentos realizados.</string>
     <string name="text_descricao_exercicio">Imagem de uma mulher se exercitando</string>
+    <string name="text_escolha">Escolha um dispositivo</string>
+    <string name="text_descricao_escolha">"Você deve estar emparelhado com seu dispositivo para vê-lo na lista. Puxe para atualizar a lista. "</string>
+    <string name="text_dispositivo_nao_encontrado">Dispositivo não Encontrado!</string>
 </resources>

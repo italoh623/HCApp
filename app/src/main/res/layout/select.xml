@@ -9,20 +9,21 @@
         android:id="@+id/text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Select a device."
         android:paddingLeft="10dip"
-        android:textSize="30sp"/>
+        android:text="@string/text_escolha"
+        android:textColor="@color/azul_escuro"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/info"
-        android:textSize="15sp"
-        android:paddingLeft="10dip"
-        android:paddingBottom="5dip"
-        android:textColor="@color/bg"
-        android:text="You must be paired with your device to see it in the list. Pull to refresh the list."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text"/>
+        android:layout_below="@+id/text"
+        android:paddingLeft="10dip"
+        android:paddingBottom="5dip"
+        android:text="@string/text_descricao_escolha"
+        android:textColor="@color/bg"
+        android:textSize="15sp" />
 
     <me.aflak.pulltorefresh.PullToRefresh
         android:id="@+id/pull_to_refresh"
@@ -42,8 +43,10 @@
         android:id="@+id/not_in_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Device not found!"
         android:layout_below="@+id/pull_to_refresh"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@color/vermelho"
+        android:text="@string/text_dispositivo_nao_encontrado"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
