@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,8 @@ import me.aflak.heroicuidador.R;
 
 public class AddAtividadeDialog extends AppCompatDialogFragment {
 
-    private EditText editTextHorario;
-    private EditText editTextAtividade;
+    private TextInputEditText editTextHorario;
+    private TextInputEditText editTextAtividade;
     private AddAtividadeDialogListener listener;
 
     @Override
