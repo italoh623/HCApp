@@ -165,10 +165,10 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         atividade = new Atividade("14:00","Dormir");
         this.atividades.add(atividade);
 
-        atividade = new Atividade("19:57","Jantar");
+        atividade = new Atividade("21:00","Jantar");
         this.atividades.add(atividade);
 
-        atividade = new Atividade("19:58","Dormir");
+        atividade = new Atividade("21:02","Dormir");
         this.atividades.add(atividade);
     }
 
@@ -218,7 +218,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");
         Date date = new Date();
-        String dataStr = dateFormat.format(date).toString();
+        String horaAtual = dateFormat.format(date).toString();
 
 //        Display(date.getHours() + ":" + date.getMinutes() + message);
 
@@ -231,7 +231,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
             if (movimento.equals("incorreto")) {
 
                 for(Atividade atividade : atividades){
-                    if (atividade.getHorario().equals(dataStr)) {
+                    if (isMesmoHorario(atividade.getHorario(), horaAtual)) {
 
                         atividade.setConcluida(true);
                         atividade.setMovimentoCorreto(false);
@@ -253,10 +253,24 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         } else {
             Display(message);
         }
+    }
 
+    public boolean isMesmoHorario(String horaA, String horaB) {
 
+        String temposA[] = horaA.split(":");
+        String temposB[] = horaB.split(":");
 
+        if (temposA[0].equals(temposB[0])) {
 
+            Integer segundosA = new Integer(temposA[1]);
+            Integer segundosB = new Integer(temposB[1]);
+
+            if (segundosA - 3 <= segundosB && segundosA + 3 >= segundosB ) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
