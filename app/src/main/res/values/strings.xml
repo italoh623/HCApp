@@ -22,4 +22,6 @@
     <string name="text_escolha">Escolha um dispositivo</string>
     <string name="text_descricao_escolha">"Você deve estar emparelhado com seu dispositivo para vê-lo na lista. Puxe para atualizar a lista. "</string>
     <string name="text_dispositivo_nao_encontrado">Dispositivo não Encontrado!</string>
+    <string name="text_horario">Horário</string>
+    <string name="text_atividade">Atividade</string>
 </resources>

@@ -34,9 +34,10 @@ import java.util.List;
 import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
 import me.aflak.heroicuidador.adapter.RotinaAdapter;
+import me.aflak.heroicuidador.dialog.AddAtividadeDialog;
 import me.aflak.heroicuidador.model.Atividade;
 
-public class HomeActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
+public class HomeActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback, AddAtividadeDialog.AddAtividadeDialogListener {
 
     // Bluetooth
     private String name;
@@ -116,11 +117,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         buttonAddAtividade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                atividades.add(new Atividade("20:00","Caminha"));
-                Collections.sort(atividades);
-
-                RotinaAdapter adapter = new RotinaAdapter(atividades);
-                recyclerView.setAdapter(adapter);
+                openDialog();
             }
         });
 
@@ -324,4 +321,20 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
             }
         }
     };
+
+    // Adicionar nova atividade
+
+    public void openDialog() {
+        AddAtividadeDialog dialog = new AddAtividadeDialog();
+        dialog.show(getSupportFragmentManager(), "Add Atividade Dialog");
+    }
+
+    @Override
+    public void applyTexts(String horario, String atividade) {
+        atividades.add(new Atividade(horario, atividade));
+        Collections.sort(atividades);
+
+        RotinaAdapter adapter = new RotinaAdapter(atividades);
+        recyclerView.setAdapter(adapter);
+    }
 }
