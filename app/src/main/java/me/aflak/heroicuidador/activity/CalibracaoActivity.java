@@ -154,6 +154,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
         Display("Connecting again...");
         b.connectToDevice(device);
     }
+
     @Override
     public void onBackPressed() {
         b.removeCommunicationCallback();
@@ -161,7 +162,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
 
         unregisterReceiver(mReceiver);
 
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, ApresentacaoCalibracaoActivity.class);
         int position = getIntent().getExtras().getInt("pos");
         intent.putExtra("pos", position);
         startActivity(intent);

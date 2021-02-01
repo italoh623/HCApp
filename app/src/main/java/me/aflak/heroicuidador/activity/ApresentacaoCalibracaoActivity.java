@@ -56,6 +56,9 @@ public class ApresentacaoCalibracaoActivity extends AppCompatActivity implements
         buttonStartCalibracao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                b.removeCommunicationCallback();
+                b.disconnect();
+
                 Intent intent = new Intent(getApplicationContext(), CalibracaoActivity.class);
                 intent.putExtra("pos", position);
 
@@ -81,6 +84,21 @@ public class ApresentacaoCalibracaoActivity extends AppCompatActivity implements
         Display("Disconnected!");
         Display("Connecting again...");
         b.connectToDevice(device);
+    }
+
+    @Override
+    public void onBackPressed() {
+        b.removeCommunicationCallback();
+        b.disconnect();
+
+        unregisterReceiver(mReceiver);
+
+        Intent intent = new Intent(this, HomeActivity.class);
+        int position = getIntent().getExtras().getInt("pos");
+        intent.putExtra("pos", position);
+        startActivity(intent);
+
+        finish();
     }
 
     @Override
