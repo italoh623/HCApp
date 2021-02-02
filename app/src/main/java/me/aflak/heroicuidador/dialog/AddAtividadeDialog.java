@@ -9,14 +9,16 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import me.aflak.heroicuidador.R;
 
 public class AddAtividadeDialog extends AppCompatDialogFragment {
 
     private TextInputEditText editTextHorario;
-    private TextInputEditText editTextAtividade;
+    private Spinner spinnerAtividade;
     private AddAtividadeDialogListener listener;
 
     @Override
@@ -39,14 +41,19 @@ public class AddAtividadeDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String horario = editTextHorario.getText().toString();
-                        String nomeAtividade = editTextAtividade.getText().toString();
+                        String nomeAtividade = spinnerAtividade.getSelectedItem().toString();
 
                         listener.applyTexts(horario, nomeAtividade);
                     }
                 });
 
         editTextHorario = view.findViewById(R.id.editTextHorario);
-        editTextAtividade = view.findViewById(R.id.editTextAtividade);
+        spinnerAtividade = view.findViewById(R.id.spinnerAtividade);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.text_atividades, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerAtividade.setAdapter(adapter);
 
         return builder.create();
     }

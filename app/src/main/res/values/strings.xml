@@ -24,4 +24,13 @@
     <string name="text_dispositivo_nao_encontrado">Dispositivo não Encontrado!</string>
     <string name="text_horario">Horário</string>
     <string name="text_atividade">Atividade</string>
+
+    <string-array name="text_atividades">
+        <item>Caminhar</item>
+        <item>Banho</item>
+        <item>Jantar</item>
+        <item>Café da Manhã</item>
+        <item>Almoço</item>
+        <item>Dormir</item>
+    </string-array>
 </resources>
