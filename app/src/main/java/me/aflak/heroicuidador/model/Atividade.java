@@ -101,7 +101,14 @@ public class Atividade implements Comparable<Atividade>, Parcelable {
 
     @Override
     public int compareTo(Atividade obj) {
-        return this.horario.compareTo(obj.getHorario());
+        String[] temposA = this.horario.split(":");
+        String[] temposB = obj.getHorario().split(":");
+
+        Integer horaA = new Integer(temposA[0] + temposA[1]);
+        Integer horaB = new Integer(temposB[0] + temposB[1]);
+
+
+        return horaA.compareTo(horaB);
     }
 
     @Override
