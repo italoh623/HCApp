@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -90,6 +91,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
                 Intent intent = new Intent(getApplicationContext(), ApresentacaoCalibracaoActivity.class);
                 intent.putExtra("pos", position);
+                intent.putParcelableArrayListExtra("atividades", new ArrayList<Atividade>(atividades));
 
                 startActivity(intent);
             }
@@ -103,6 +105,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
                 Intent intent = new Intent(getApplicationContext(), OperacaoActivity.class);
                 intent.putExtra("pos", position);
+                intent.putParcelableArrayListExtra("atividades", new ArrayList<Atividade>(atividades));
 
                 startActivity(intent);
             }
@@ -120,13 +123,35 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        atividades = new ArrayList<>();
-        this.prepararAtividades();
-        Collections.sort(atividades);
+        if (savedInstanceState != null) {
+
+            System.out.println("Oiiiii");
+            atividades = savedInstanceState.getParcelableArrayList("atividades");
+
+        } else {
+            if (getIntent().getExtras().getParcelableArrayList("atividades") != null) {
+
+                atividades = getIntent().getExtras().getParcelableArrayList("atividades");
+
+
+            } else {
+                System.out.println("Tchauu");
+                atividades = new ArrayList<>();
+                this.prepararAtividades();
+                Collections.sort(atividades);
+            }
+        }
 
         RotinaAdapter adapter = new RotinaAdapter(atividades);
         recyclerView.setAdapter(adapter);
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        System.out.println("Ihuuu");
+        outState.putParcelableArrayList("atividades", new ArrayList<Atividade>(atividades));
     }
 
     @Override

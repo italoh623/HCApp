@@ -16,10 +16,13 @@ import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
+import me.aflak.heroicuidador.model.Atividade;
 
 public class OperacaoActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
 
@@ -30,6 +33,8 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
 
     private TextView textViewLogsComunicacao;
     private Button buttonResetar;
+
+    private List<Atividade> atividades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,8 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
 
         final int position = getIntent().getExtras().getInt("pos");
         name = b.getPairedDevices().get(position).getName();
+
+        atividades = getIntent().getExtras().getParcelableArrayList("atividades");
 
         Toast.makeText(getApplicationContext(),  "Conectando...", Toast.LENGTH_SHORT).show();
         Display("Connecting...");
@@ -97,6 +104,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
         Intent intent = new Intent(this, HomeActivity.class);
         int position = getIntent().getExtras().getInt("pos");
         intent.putExtra("pos", position);
+        intent.putParcelableArrayListExtra("atividades", new ArrayList<Atividade>(atividades));
         startActivity(intent);
 
         finish();

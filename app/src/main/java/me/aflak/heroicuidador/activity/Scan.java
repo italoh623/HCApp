@@ -17,6 +17,7 @@ import java.util.List;
 
 import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
+import me.aflak.heroicuidador.model.Atividade;
 
 /**
  * Created by Omar on 08/05/2016.

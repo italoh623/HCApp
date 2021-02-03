@@ -13,8 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
+import me.aflak.heroicuidador.model.Atividade;
 
 public class ApresentacaoCalibracaoActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
 
@@ -24,6 +28,8 @@ public class ApresentacaoCalibracaoActivity extends AppCompatActivity implements
     private boolean registered = false;
 
     private Button buttonStartCalibracao;
+
+    private List<Atividade> atividades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,8 @@ public class ApresentacaoCalibracaoActivity extends AppCompatActivity implements
         final int position = getIntent().getExtras().getInt("pos");
         name = b.getPairedDevices().get(position).getName();
 
+        atividades = getIntent().getExtras().getParcelableArrayList("atividades");
+
         Toast.makeText(getApplicationContext(),  "Conectando...", Toast.LENGTH_SHORT).show();
         //  Display("Connecting...");
         b.connectToDevice(b.getPairedDevices().get(position));
@@ -61,6 +69,7 @@ public class ApresentacaoCalibracaoActivity extends AppCompatActivity implements
 
                 Intent intent = new Intent(getApplicationContext(), CalibracaoActivity.class);
                 intent.putExtra("pos", position);
+                intent.putParcelableArrayListExtra("atividades", new ArrayList<Atividade>(atividades));
 
                 startActivity(intent);
             }
@@ -96,6 +105,7 @@ public class ApresentacaoCalibracaoActivity extends AppCompatActivity implements
         Intent intent = new Intent(this, HomeActivity.class);
         int position = getIntent().getExtras().getInt("pos");
         intent.putExtra("pos", position);
+        intent.putParcelableArrayListExtra("atividades", new ArrayList<Atividade>(atividades));
         startActivity(intent);
 
         finish();

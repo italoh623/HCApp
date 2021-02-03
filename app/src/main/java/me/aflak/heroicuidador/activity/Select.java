@@ -20,6 +20,7 @@ import java.util.List;
 
 import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
+import me.aflak.heroicuidador.model.Atividade;
 import me.aflak.pulltorefresh.PullToRefresh;
 
 /**
@@ -31,7 +32,7 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
     private Button not_found;
     private List<BluetoothDevice> paired;
     private PullToRefresh pull_to_refresh;
-    private boolean registered=false;
+    private boolean registered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

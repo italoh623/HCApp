@@ -14,8 +14,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
+import me.aflak.heroicuidador.model.Atividade;
 
 public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
 
@@ -39,15 +43,13 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
     //Text views
     private TextView textView_calibracao;
 
-
     //Buttons
     private Button finalizar_calibracao;
     private Button iniciar_movimento;
     private Button finalizar_movimento;
 
 
-
-
+    private List<Atividade> atividades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,8 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
 
         final int position = getIntent().getExtras().getInt("pos");
         name = b.getPairedDevices().get(position).getName();
+
+        atividades = getIntent().getExtras().getParcelableArrayList("atividades");
 
         Toast.makeText(getApplicationContext(),  "Conectando...", Toast.LENGTH_SHORT).show();
         //  Display("Connecting...");
@@ -165,6 +169,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
         Intent intent = new Intent(this, ApresentacaoCalibracaoActivity.class);
         int position = getIntent().getExtras().getInt("pos");
         intent.putExtra("pos", position);
+        intent.putParcelableArrayListExtra("atividades", new ArrayList<Atividade>(atividades));
         startActivity(intent);
 
         finish();

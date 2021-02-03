@@ -1,6 +1,11 @@
 package me.aflak.heroicuidador.model;
 
-public class Atividade implements Comparable<Atividade> {
+import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.annotation.RequiresApi;
+
+public class Atividade implements Comparable<Atividade>, Parcelable {
 
     private String horario;
     private String nome;
@@ -17,6 +22,14 @@ public class Atividade implements Comparable<Atividade> {
         this.nome = nome;
         this.concluida = false;
         this.movimentoCorreto = true;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    public Atividade(Parcel in) {
+        this.horario = in.readString();
+        this.nome = in.readString();
+        this.concluida = in.readBoolean();
+        this.movimentoCorreto = in.readBoolean();
     }
 
     public String getHorario() {
@@ -55,4 +68,29 @@ public class Atividade implements Comparable<Atividade> {
     public int compareTo(Atividade obj) {
         return this.horario.compareTo(obj.getHorario());
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(horario);
+        dest.writeString(nome);
+        dest.writeBoolean(concluida);
+        dest.writeBoolean(movimentoCorreto);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        @RequiresApi(api = Build.VERSION_CODES.Q)
+        public Atividade createFromParcel(Parcel in) {
+            return new Atividade(in);
+        }
+
+        public Atividade[] newArray(int size) {
+            return new Atividade[size];
+        }
+    };
 }
