@@ -13,7 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import me.aflak.bluetooth.Bluetooth;
@@ -113,7 +116,48 @@ public class ApresentacaoCalibracaoActivity extends AppCompatActivity implements
 
     @Override
     public void onMessage(String message) {
-        Display(message);
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        Date date = new Date();
+        String horaAtual = dateFormat.format(date).toString();
+
+        String codigo = message.substring(0, 3);
+
+        if (codigo.equals("MOV")) {
+            String movimento = message.substring(3);
+            System.out.println(movimento);
+
+            if (movimento.equals("incorreto")) {
+
+                for(Atividade atividade : atividades){
+                    if (isMesmoHorario(atividade.getHorario(), horaAtual)) {
+
+                        atividade.setConcluida(true);
+                        atividade.setMovimentoCorreto(false);
+
+                    }
+                }
+            }
+        } else {
+            Display(message);
+        }
+    }
+
+    public boolean isMesmoHorario(String horaA, String horaB) {
+
+        String temposA[] = horaA.split(":");
+        String temposB[] = horaB.split(":");
+
+        if (temposA[0].equals(temposB[0])) {
+
+            Integer segundosA = new Integer(temposA[1]);
+            Integer segundosB = new Integer(temposB[1]);
+
+            if (segundosA - 3 <= segundosB && segundosA + 3 >= segundosB ) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override

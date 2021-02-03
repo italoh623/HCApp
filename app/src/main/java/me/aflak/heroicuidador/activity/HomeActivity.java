@@ -236,8 +236,6 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         Date date = new Date();
         String horaAtual = dateFormat.format(date).toString();
 
-//        Display(date.getHours() + ":" + date.getMinutes() + message);
-
         String codigo = message.substring(0, 3);
 
         if (codigo.equals("MOV")) {
