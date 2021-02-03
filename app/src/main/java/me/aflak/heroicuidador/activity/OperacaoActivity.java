@@ -23,6 +23,7 @@ import java.util.List;
 import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
 import me.aflak.heroicuidador.model.Atividade;
+import me.aflak.heroicuidador.model.ExtraUtils;
 
 public class OperacaoActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
 
@@ -128,7 +129,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
             if (movimento.equals("incorreto")) {
 
                 for(Atividade atividade : atividades){
-                    if (isMesmoHorario(atividade.getHorario(), horaAtual)) {
+                    if (ExtraUtils.isMesmoHorario(atividade.getHorario(), horaAtual)) {
 
                         atividade.setConcluida(true);
                         atividade.setMovimentoCorreto(false);
@@ -139,24 +140,6 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
         } else {
             Display(message);
         }
-    }
-
-    public boolean isMesmoHorario(String horaA, String horaB) {
-
-        String temposA[] = horaA.split(":");
-        String temposB[] = horaB.split(":");
-
-        if (temposA[0].equals(temposB[0])) {
-
-            Integer segundosA = new Integer(temposA[1]);
-            Integer segundosB = new Integer(temposB[1]);
-
-            if (segundosA - 3 <= segundosB && segundosA + 3 >= segundosB ) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     @Override
