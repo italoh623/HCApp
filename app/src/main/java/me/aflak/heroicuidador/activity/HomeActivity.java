@@ -2,12 +2,10 @@ package me.aflak.heroicuidador.activity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,9 +13,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -26,7 +21,6 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -146,6 +140,8 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
     public void prepararAtividades() {
         Atividade atividade = new Atividade("8:00","Banho");
+        atividade.setMovimentoCorreto(false);
+        atividade.setConcluida(true);
         this.atividades.add(atividade);
 
         atividade = new Atividade("9:00","Tomar Café");
@@ -330,7 +326,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     }
 
     @Override
-    public void applyTexts(String horario, String atividade) {
+    public void addAtividade(String horario, String atividade) {
         atividades.add(new Atividade(horario, atividade));
         Collections.sort(atividades);
 

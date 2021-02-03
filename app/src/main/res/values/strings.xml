@@ -24,6 +24,7 @@
     <string name="text_dispositivo_nao_encontrado">Dispositivo não Encontrado!</string>
     <string name="text_horario">Horário</string>
     <string name="text_atividade">Atividade</string>
+    <string name="text_hora_inicial">00:00</string>
 
     <string-array name="text_atividades">
         <item>Caminhar</item>
