@@ -9,7 +9,6 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,9 +29,10 @@ import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
 import me.aflak.heroicuidador.adapter.RotinaAdapter;
 import me.aflak.heroicuidador.dialog.AddAtividadeDialog;
+import me.aflak.heroicuidador.dialog.AlertaMovimentoDialog;
 import me.aflak.heroicuidador.model.Atividade;
 
-public class HomeActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback, AddAtividadeDialog.AddAtividadeDialogListener {
+public class HomeActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback, AddAtividadeDialog.AddAtividadeDialogListener, AlertaMovimentoDialog.AlertaMovimentoDialogListener {
 
     // Bluetooth
     private String name;
@@ -142,7 +142,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
             }
         }
 
-        RotinaAdapter adapter = new RotinaAdapter(atividades);
+        RotinaAdapter adapter = new RotinaAdapter(atividades, getSupportFragmentManager());
         recyclerView.setAdapter(adapter);
 
     }
@@ -256,7 +256,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
                             public void run() {
 
                                 // Stuff that updates the UI
-                                RotinaAdapter adapter = new RotinaAdapter(atividades);
+                                RotinaAdapter adapter = new RotinaAdapter(atividades, getSupportFragmentManager());
                                 recyclerView.setAdapter(adapter);
                             }
                         });
@@ -353,7 +353,15 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
         atividades.add(new Atividade(horario, atividade));
         Collections.sort(atividades);
 
-        RotinaAdapter adapter = new RotinaAdapter(atividades);
+        RotinaAdapter adapter = new RotinaAdapter(atividades, getSupportFragmentManager());
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void removerAtividade(Atividade atividade) {
+        atividades.remove(atividade);
+
+        RotinaAdapter adapter = new RotinaAdapter(atividades, getSupportFragmentManager());
         recyclerView.setAdapter(adapter);
     }
 }

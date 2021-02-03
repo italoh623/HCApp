@@ -19,7 +19,7 @@ import java.util.Calendar;
 
 import me.aflak.heroicuidador.R;
 
-public class AddAtividadeDialog extends AppCompatDialogFragment{
+public class AddAtividadeDialog extends AppCompatDialogFragment {
 
     private TextView textViewHorario;
     private Spinner spinnerAtividade;
@@ -68,8 +68,8 @@ public class AddAtividadeDialog extends AppCompatDialogFragment{
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-                                String hora = hourOfDay + "";
-                                String minuto = minute + "";
+                                String hora = String.valueOf(hourOfDay);
+                                String minuto = String.valueOf(minute);
 
                                 if (hourOfDay < 10) {
                                     hora = "0" + hora;

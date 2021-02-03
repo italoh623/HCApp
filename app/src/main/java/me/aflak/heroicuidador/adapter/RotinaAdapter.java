@@ -1,6 +1,9 @@
 package me.aflak.heroicuidador.adapter;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,18 +11,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import me.aflak.heroicuidador.R;
+import me.aflak.heroicuidador.dialog.AlertaMovimentoDialog;
 import me.aflak.heroicuidador.model.Atividade;
 
 public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHolder> {
 
     private List<Atividade> listaAtividades;
+    private FragmentManager fragmentManager;
 
-    public RotinaAdapter(List<Atividade> listaAtividades) {
+    public RotinaAdapter(List<Atividade> listaAtividades, FragmentManager fragmentManager) {
         this.listaAtividades = listaAtividades;
+        this.fragmentManager = fragmentManager;
     }
 
     @NonNull
@@ -33,7 +38,7 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
 
         final Atividade atividade = listaAtividades.get(i);
 
@@ -67,6 +72,24 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
             }
         });
 
+
+        myViewHolder.buttonAlerta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog(atividade);
+            }
+        });
+
+    }
+
+    public void openDialog(Atividade atividade) {
+        AlertaMovimentoDialog dialog = new AlertaMovimentoDialog();
+
+        Bundle bundle  = new Bundle();
+        bundle.putParcelable("atividade", atividade);
+        dialog.setArguments(bundle);
+
+        dialog.show(fragmentManager, "Movimento");
     }
 
     @Override
@@ -80,9 +103,6 @@ public class RotinaAdapter extends RecyclerView.Adapter<RotinaAdapter.MyViewHold
         private TextView textViewNome;
         private Button buttonCheck;
         private Button buttonAlerta;
-
-        private boolean realizada;
-        private boolean movimentoCorreto;
 
 
         public MyViewHolder(@NonNull View itemView) {
