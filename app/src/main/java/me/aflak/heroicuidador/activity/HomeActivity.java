@@ -341,8 +341,15 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     }
 
     @Override
-    public void removerAtividade(Atividade atividade) {
+    public void resetarAtividade(Atividade atividade) {
+
         atividades.remove(atividade);
+
+        Atividade novaAtividade = new Atividade(atividade.getHorario(), atividade.getNome());
+        atividades.add(novaAtividade);
+
+        Collections.sort(atividades);
+
 
         RotinaAdapter adapter = new RotinaAdapter(atividades, getSupportFragmentManager());
         recyclerView.setAdapter(adapter);

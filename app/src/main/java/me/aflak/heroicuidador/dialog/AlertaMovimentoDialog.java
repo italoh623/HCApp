@@ -40,7 +40,7 @@ public class AlertaMovimentoDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Entendi!", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        listener.removerAtividade(atividade);
+                        listener.resetarAtividade(atividade);
                     }
                 });
 
@@ -64,6 +64,6 @@ public class AlertaMovimentoDialog extends AppCompatDialogFragment {
 
 
     public interface AlertaMovimentoDialogListener {
-        void removerAtividade(Atividade atividade);
+        void resetarAtividade(Atividade atividade);
     }
 }
