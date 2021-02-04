@@ -30,12 +30,6 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
 
 
     // Calibração
-    int soma = 0;
-    int valor_inicial = 0;
-    int valor_final = 0;
-    double media = 0;
-    int contador = 0;
-    int i = 0;
     float valores_calibracao[]=new float[10];
     int contador_calibracao = 0;
     float valor_calibrado = 0;
@@ -45,6 +39,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
     private String name;
     private Bluetooth b;
     private boolean registered = false;
+
     //Text views
     private TextView textView_calibracao;
 
@@ -53,7 +48,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
     private Button iniciar_movimento;
     private Button finalizar_movimento;
 
-
+    //Lista de Atividade
     private List<Atividade> atividades;
 
     @Override
@@ -87,32 +82,38 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
         textView_calibracao = findViewById(R.id.textView_calibracao);
 
 
-
         iniciar_movimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 contador_calibracao++;
+
+                Display("Exercício " + contador_calibracao + ": Tente tocar seus pés com as pontas dos dedos");
+
                 b.send("iniciar_movimento");
             }
         });
+
         finalizar_movimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 b.send("finalizar_movimento");
 
-                if(contador_calibracao<=10){
-                    //Display(Integer.toString(contador_calibracao));
-                    valores_calibracao[contador_calibracao-1] = valor_atual_calibracao;
+                if (contador_calibracao <= 10) {
+
+                    valores_calibracao[contador_calibracao - 1] = valor_atual_calibracao;
+
+                    Display("Exercício " + contador_calibracao + " finalizado. Angulação obtida: " + valor_atual_calibracao + " graus");
                     System.out.println("Valor de calibracao["+(contador_calibracao-1)+"] ="+valor_atual_calibracao);
-                 //   b.send("proxima_calibracao");
-                }else if(contador_calibracao==11){
+
+                } else if (contador_calibracao == 11){
                     valores_calibracao[0] = valor_atual_calibracao;
+
                     finalizar_movimento.setVisibility(View.INVISIBLE);
                     iniciar_movimento.setVisibility(View.INVISIBLE);
                     finalizar_calibracao.setVisibility(View.VISIBLE);
-                  //  b.send("proxima_calibracao");
-                }else{
 
+                } else {
+                    System.out.println("Isso não deveria ter acontecido!!");
                 }
             }
         });
@@ -120,25 +121,29 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
         finalizar_calibracao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 b.send("finalizar_calibracao");
+
                 valor_calibrado = 0;
+
+
                 System.out.print("Valores: ");
+
                 for(int i=0; i<10; i++) {
                     System.out.print(valores_calibracao[i]+" ");
                     valor_calibrado += valores_calibracao[i];
                 }
-                System.out.println();
-                valor_calibrado = valor_calibrado/10;
 
-               // b.send("fim_calibracao");
-               // Display(Float.toString(valor_calibrado));
+                System.out.println();
+
+
+                valor_calibrado = valor_calibrado/10;
+                Display("Valor de angulação obtido: " + valor_calibrado);
+
                 finalizar_calibracao.setVisibility(View.INVISIBLE);
 
             }
         });
-
-
-
 
     }
 
@@ -147,7 +152,6 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
     public void onConnect(BluetoothDevice device) {
       Display("Conectado " + device.getName() + " - " + device.getAddress());
 //        Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
-
 
         this.runOnUiThread(new Runnable() {
             @Override
