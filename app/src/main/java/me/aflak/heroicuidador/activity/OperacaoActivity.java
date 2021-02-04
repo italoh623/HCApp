@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -57,7 +56,6 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
 
         atividades = getIntent().getExtras().getParcelableArrayList("atividades");
 
-        Toast.makeText(getApplicationContext(),  "Conectando...", Toast.LENGTH_SHORT).show();
         Display("Connecting...");
         b.connectToDevice(b.getPairedDevices().get(position));
 
@@ -78,7 +76,6 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
     @Override
     public void onConnect(BluetoothDevice device) {
         Display("Conectado " + device.getName() + " - " + device.getAddress());
-//        Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
 
         this.runOnUiThread(new Runnable() {
             @Override

@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,7 +21,6 @@ import java.util.List;
 
 import me.aflak.bluetooth.Bluetooth;
 import me.aflak.heroicuidador.R;
-import me.aflak.heroicuidador.adapter.RotinaAdapter;
 import me.aflak.heroicuidador.model.Atividade;
 import me.aflak.heroicuidador.model.ExtraUtils;
 
@@ -30,7 +28,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
 
 
     // Calibração
-    float valores_calibracao[]=new float[10];
+    float valores_calibracao[] = new float[10];
     int contador_calibracao = 0;
     float valor_calibrado = 0;
     float valor_atual_calibracao = 0;
@@ -67,8 +65,6 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
 
         atividades = getIntent().getExtras().getParcelableArrayList("atividades");
 
-        Toast.makeText(getApplicationContext(),  "Conectando...", Toast.LENGTH_SHORT).show();
-        //  Display("Connecting...");
         b.connectToDevice(b.getPairedDevices().get(position));
 
         IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
@@ -151,7 +147,6 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
     @Override
     public void onConnect(BluetoothDevice device) {
       Display("Conectado " + device.getName() + " - " + device.getAddress());
-//        Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
 
         this.runOnUiThread(new Runnable() {
             @Override
