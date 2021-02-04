@@ -124,7 +124,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
             String movimento = message.substring(3);
             System.out.println(movimento);
 
-            Display(message);
+            Display("Movimento " + movimento);
 
             if (movimento.equals("incorreto")) {
 
