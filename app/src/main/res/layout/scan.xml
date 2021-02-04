@@ -33,8 +33,10 @@
         android:id="@+id/scan_scan_again"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Scan again"
+        android:layout_alignEnd="@+id/scan_state"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/scan_state" />
+        android:background="@drawable/rounded_button"
+        android:text="Scan again"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
