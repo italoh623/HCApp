@@ -83,11 +83,14 @@ public class ApresentacaoCalibracaoActivity extends AppCompatActivity implements
     @Override
     public void onConnect(BluetoothDevice device) {
         Display("Conectado " + device.getName() + " - " + device.getAddress());
-        Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),  "Connected", Toast.LENGTH_SHORT).show();
+
+
 
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                buttonStartCalibracao.setEnabled(true);
             }
         });
     }
@@ -96,6 +99,14 @@ public class ApresentacaoCalibracaoActivity extends AppCompatActivity implements
     public void onDisconnect(BluetoothDevice device, String message) {
         Display("Disconnected!");
         Display("Connecting again...");
+
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                buttonStartCalibracao.setEnabled(false);
+            }
+        });
+
         b.connectToDevice(device);
     }
 

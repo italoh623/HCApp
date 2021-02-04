@@ -81,9 +81,9 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
         registered = true;
 
 
-        iniciar_movimento = (Button) findViewById(R.id.iniciar_movimento);
-        finalizar_movimento = (Button) findViewById(R.id.iniciar_movimento);
-        finalizar_calibracao = (Button) findViewById(R.id.finalizar_calibracao);
+        iniciar_movimento = findViewById(R.id.iniciar_movimento);
+        finalizar_movimento = findViewById(R.id.finalizar_movimento);
+        finalizar_calibracao = findViewById(R.id.finalizar_calibracao);
         textView_calibracao = findViewById(R.id.textView_calibracao);
 
 
@@ -91,7 +91,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
         iniciar_movimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    contador_calibracao++;
+                contador_calibracao++;
                 b.send("iniciar_movimento");
             }
         });
