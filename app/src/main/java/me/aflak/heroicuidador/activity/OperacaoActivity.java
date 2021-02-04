@@ -84,6 +84,8 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
             @Override
             public void run() {
                 b.send("operacao");
+
+                buttonResetar.setEnabled(false);
             }
         });
     }
@@ -92,6 +94,9 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
     public void onDisconnect(BluetoothDevice device, String message) {
         Display("Disconnected!");
         Display("Connecting again...");
+
+        buttonResetar.setEnabled(false);
+
         b.connectToDevice(device);
     }
 
