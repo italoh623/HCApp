@@ -203,6 +203,28 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
                     }
                 }
             }
+        } else if (codigo.equals("CAL")) {
+            //receber valor e colcoar no vetor
+
+            valor_atual_calibracao = Float.parseFloat(message.substring(3));
+
+            if (contador_calibracao <= 10) {
+
+                valores_calibracao[contador_calibracao - 1] = valor_atual_calibracao;
+
+                Display("Exercício " + contador_calibracao + " finalizado. Angulação obtida: " + valor_atual_calibracao + " graus");
+                System.out.println("Valor de calibracao["+(contador_calibracao-1)+"] ="+valor_atual_calibracao);
+
+            } else if (contador_calibracao == 11){
+                valores_calibracao[0] = valor_atual_calibracao;
+
+                finalizar_movimento.setVisibility(View.INVISIBLE);
+                iniciar_movimento.setVisibility(View.INVISIBLE);
+                finalizar_calibracao.setVisibility(View.VISIBLE);
+
+            } else {
+                System.out.println("Isso não deveria ter acontecido!!");
+            }
         } else {
             Display(message);
         }
