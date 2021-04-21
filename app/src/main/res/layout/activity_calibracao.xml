@@ -9,24 +9,6 @@
     tools:context=".activity.CalibracaoActivity">
 
     <Button
-        android:id="@+id/iniciar_movimento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/vermelho"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:text="@string/text_iniciar_movimento"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/finalizar_calibracao"
-        app:layout_constraintEnd_toStartOf="@+id/finalizar_movimento"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/finalizar_calibracao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -42,23 +24,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/finalizar_movimento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/vermelho"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:text="@string/text_finalizar_movimento"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/finalizar_calibracao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/iniciar_movimento" />
 
     <TextView
         android:id="@+id/textView3"
@@ -86,7 +51,6 @@
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/iniciar_movimento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
