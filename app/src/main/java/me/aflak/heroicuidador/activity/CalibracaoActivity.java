@@ -26,10 +26,9 @@ import me.aflak.heroicuidador.model.ExtraUtils;
 
 public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
 
-
     // Calibração
     float valores_calibracao[] = new float[10];
-    int contador_calibracao = 0;
+    int contador_calibracao = 1;
     float valor_calibrado = 0;
     float valor_atual_calibracao = 0;
 
@@ -43,8 +42,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
 
     //Buttons
     private Button finalizar_calibracao;
-    private Button iniciar_movimento;
-    private Button finalizar_movimento;
+
 
     //Lista de Atividade
     private List<Atividade> atividades;
@@ -72,47 +70,29 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
         registered = true;
 
 
-        iniciar_movimento = findViewById(R.id.iniciar_movimento);
-        finalizar_movimento = findViewById(R.id.finalizar_movimento);
+        //iniciar_movimento = findViewById(R.id.iniciar_movimento);
+        //finalizar_movimento = findViewById(R.id.finalizar_movimento);
         finalizar_calibracao = findViewById(R.id.finalizar_calibracao);
         textView_calibracao = findViewById(R.id.textView_calibracao);
 
 
-        iniciar_movimento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                contador_calibracao++;
+       // iniciar_movimento.setOnClickListener(new View.OnClickListener() {
+         //   @Override
+           // public void onClick(View v) {
+             //   contador_calibracao++;
 
                 Display("Exercício " + contador_calibracao + ": Tente tocar seus pés com as pontas dos dedos");
 
                 b.send("iniciar_calibracao");
-            }
-        });
+            //}
+        //});
 
-        finalizar_movimento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                b.send("proxima_calibracao");
+        //finalizar_movimento.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+           // public void onClick(View v) {
 
-                if (contador_calibracao <= 10) {
-
-                    valores_calibracao[contador_calibracao - 1] = valor_atual_calibracao;
-
-                    Display("Exercício " + contador_calibracao + " finalizado. Angulação obtida: " + valor_atual_calibracao + " graus");
-                    System.out.println("Valor de calibracao["+(contador_calibracao-1)+"] ="+valor_atual_calibracao);
-
-                } else if (contador_calibracao == 11){
-                    valores_calibracao[0] = valor_atual_calibracao;
-
-                    finalizar_movimento.setVisibility(View.INVISIBLE);
-                    iniciar_movimento.setVisibility(View.INVISIBLE);
-                    finalizar_calibracao.setVisibility(View.VISIBLE);
-
-                } else {
-                    System.out.println("Isso não deveria ter acontecido!!");
-                }
-            }
-        });
+            //}
+        //});
 
         finalizar_calibracao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,7 +189,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
             valor_atual_calibracao = Float.parseFloat(message.substring(3));
 
             if (contador_calibracao <= 10) {
-
+                contador_calibracao=contador_calibracao+1;
                 valores_calibracao[contador_calibracao - 1] = valor_atual_calibracao;
 
                 Display("Exercício " + contador_calibracao + " finalizado. Angulação obtida: " + valor_atual_calibracao + " graus");
@@ -217,9 +197,6 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
 
             } else if (contador_calibracao == 11){
                 valores_calibracao[0] = valor_atual_calibracao;
-
-                finalizar_movimento.setVisibility(View.INVISIBLE);
-                iniciar_movimento.setVisibility(View.INVISIBLE);
                 finalizar_calibracao.setVisibility(View.VISIBLE);
 
             } else {
@@ -229,6 +206,8 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
             Display(message);
         }
     }
+
+
 
     @Override
     public void onError(String message) {
