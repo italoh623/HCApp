@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editSexo"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#0C2A43"
@@ -43,7 +43,7 @@
         tools:layout_editor_absoluteY="522dp" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/editPeso"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#0C2A43"
@@ -56,7 +56,7 @@
         tools:layout_editor_absoluteY="510dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editIdade"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
@@ -105,7 +105,7 @@
         tools:layout_editor_absoluteY="632dp" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword"
+        android:id="@+id/editAltura"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#0C2A43"

@@ -9,31 +9,31 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="text_operacao">Operação</string>
+    <string name="text_operacao">Operation</string>
     <string name="text_home">Home</string>
-    <string name="text_calibracao">Calibração</string>
-    <string name="text_resetar">Resetar</string>
-    <string name="text_iniciar_movimento">Iniciar Movimento</string>
-    <string name="text_finalizar_movimento">Finalizar Movimento</string>
-    <string name="text_finalizar_calibracao">Finalizar Calibração</string>
-    <string name="text_calibrar">Calibrar</string>
-    <string name="text_calibracao_apresentacao">A calibração server para conhecermos melhor o seu corpo e mehorarmos a precisão da análise dos movimentos realizados.</string>
+    <string name="text_calibracao">Calibration</string>
+    <string name="text_resetar">Reset</string>
+    <string name="text_iniciar_movimento">Start</string>
+    <string name="text_finalizar_movimento">Finish exercise</string>
+    <string name="text_finalizar_calibracao">Finish Calibration</string>
+    <string name="text_calibrar">Calibrate</string>
+    <string name="text_calibracao_apresentacao">The goal of calibration is to improve the accuracy of the analysis of the movements performed according to your biotype</string>
     <string name="text_descricao_exercicio">Imagem de uma mulher se exercitando</string>
-    <string name="text_escolha">Escolha um dispositivo</string>
-    <string name="text_descricao_escolha">"Você deve estar emparelhado com seu dispositivo para vê-lo na lista. Puxe para atualizar a lista. "</string>
-    <string name="text_dispositivo_nao_encontrado">Dispositivo não Encontrado!</string>
-    <string name="text_horario">Horário</string>
-    <string name="text_atividade">Atividade</string>
+    <string name="text_escolha">Chose a device</string>
+    <string name="text_descricao_escolha">"You must be paired with your device to see it in the list. Pull to update a list."</string>
+    <string name="text_dispositivo_nao_encontrado">Device not found!</string>
+    <string name="text_horario">Time</string>
+    <string name="text_atividade">Activity</string>
     <string name="text_hora_inicial">00:00</string>
     <string name="text_logo_descricao">Logo: Herói Cuidador</string>
 
     <string-array name="text_atividades">
-        <item>Caminhar</item>
-        <item>Banho</item>
-        <item>Jantar</item>
-        <item>Café da Manhã</item>
-        <item>Almoço</item>
-        <item>Dormir</item>
+        <item>Walk</item>
+        <item>Bath</item>
+        <item>Dinner</item>
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Sleep</item>
     </string-array>
 
     <string-array name="text_atividades_info">
