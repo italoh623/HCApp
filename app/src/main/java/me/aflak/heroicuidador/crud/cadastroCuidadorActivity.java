@@ -26,12 +26,12 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
 
-        nome = findViewById(R.id.editNome);
-        email = findViewById(R.id.editEmail);
-        altura = findViewById(R.id.editAltura);
-        idade = findViewById(R.id.editIdade);
-        peso = findViewById(R.id.editPesp);
-        sexo = findViewById(R.id.editSexo);
+//        nome = findViewById(R.id.editNome);
+//        email = findViewById(R.id.editEmail);
+//        altura = findViewById(R.id.editAltura);
+//        idade = findViewById(R.id.editIdade);
+//        peso = findViewById(R.id.editPesp);
+//        sexo = findViewById(R.id.editSexo);
 
         dao = new CuidadorDAO(this);
     }
