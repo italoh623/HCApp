@@ -26,11 +26,11 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
 
-        nome = findViewById(R.id.editNome);
-        email = findViewById(R.id.editEmail);
+        nome = findViewById(R.id.editIdade);
+        email = findViewById(R.id.editSexo);
         altura = findViewById(R.id.editAltura);
         idade = findViewById(R.id.editIdade);
-        peso = findViewById(R.id.editPesp);
+        peso = findViewById(R.id.editPeso);
         sexo = findViewById(R.id.editSexo);
 
         dao = new CuidadorDAO(this);
