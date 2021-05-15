@@ -66,4 +66,9 @@ public class Cuidador implements Serializable {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
+    @Override
+    public String toString(){
+        return nome;
+    }
 }

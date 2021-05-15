@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/close"
         android:title="Close Connection"/>
     <item android:id="@+id/rate"
         android:title="Rate the App"/>
+    <item android:title="Consulta" />
+    <item android:title="Cadastro" />
 </menu>

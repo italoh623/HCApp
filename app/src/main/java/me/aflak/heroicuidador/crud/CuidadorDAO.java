@@ -2,8 +2,11 @@ package me.aflak.heroicuidador.crud;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CuidadorDAO {
@@ -24,5 +27,17 @@ public class CuidadorDAO {
         values.put("peso", cuidador.getPeso());
         values.put("sexo", cuidador.getSexo());
         return banco.insert("cuidador", null, values);
+    }
+
+    public List<Cuidador>obterTodos(){
+        List<Cuidador> cuidador = new ArrayList<>();
+        Cursor cursor = banco.query("cuidador", new String[]{"id","nome"},
+                null, null,null,null, null,null);
+        while (cursor.moveToNext()){
+            Cuidador a = new Cuidador();
+            a.setId(cursor.getInt(0));
+            a.setNome(cursor.getString(1));
+        }
+        return cuidador;
     }
 }

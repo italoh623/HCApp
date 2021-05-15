@@ -25,11 +25,11 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        nome = findViewById(R.id.editIdade);
+        nome = findViewById(R.id.editSexo);
         email = findViewById(R.id.editSexo);
         altura = findViewById(R.id.editAltura);
-        idade = findViewById(R.id.editIdade);
-        peso = findViewById(R.id.editPeso);
+        idade = findViewById(R.id.editNome);
+        peso = findViewById(R.id.editSexo);
         sexo = findViewById(R.id.editSexo);
 
         dao = new CuidadorDAO(this);
@@ -46,7 +46,7 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
         c.setIdade(Integer.parseInt(idade.getText().toString()));
 
         long id = dao.inserir(c);
-        Toast.makeText(this,"Aluno inserido com id:"+ id,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Cuidador inserido com id: "+ id,Toast.LENGTH_SHORT).show();
     }
 
 }

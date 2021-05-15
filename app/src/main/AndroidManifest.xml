@@ -5,23 +5,23 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:roundIcon="@drawable/logo"
         android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
         android:theme="@style/AppTheme">
+        <activity android:name=".crud.ListaCuidadorActivity"></activity>
         <activity
             android:name=".crud.cadastroCuidadorActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ApresentacaoCalibracaoActivity"></activity>
+        <activity android:name=".activity.ApresentacaoCalibracaoActivity" />
         <activity
             android:name=".activity.CalibracaoActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.OperacaoActivity"
             android:screenOrientation="portrait" />
@@ -36,8 +36,7 @@
         <activity
             android:name=".activity.Select"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
