@@ -7,7 +7,7 @@ public class Idoso implements Serializable {
     private String nomeIdoso;
     private Double alturaIdoso;
     private Integer idadeIdoso;
-    private Integer pesoIdoso;
+    private Double pesoIdoso;
     private String sexoIdoso;
 
     public Integer getIdIdoso() {
@@ -42,11 +42,11 @@ public class Idoso implements Serializable {
         this.idadeIdoso = idadeIdoso;
     }
 
-    public Integer getPesoIdoso() {
+    public Double getPesoIdoso() {
         return pesoIdoso;
     }
 
-    public void setPesoIdoso(Integer pesoIdoso) {
+    public void setPesoIdoso(Double pesoIdoso) {
         this.pesoIdoso = pesoIdoso;
     }
 

@@ -9,6 +9,7 @@
         android:roundIcon="@drawable/logo"
         android:theme="@style/AppTheme">
         <activity android:name=".crud.cadastroCuidadorActivity" />
+        <activity android:name=".crud.cadastroIdosoActivity" />
         <activity android:name=".crud.LoginActivity" />
         <activity
             android:name=".crud.PrincipalActivity"
@@ -19,7 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".crud.cadastroCuidadorActivity2" />
         <activity android:name=".activity.ApresentacaoCalibracaoActivity" />
         <activity
             android:name=".activity.CalibracaoActivity"

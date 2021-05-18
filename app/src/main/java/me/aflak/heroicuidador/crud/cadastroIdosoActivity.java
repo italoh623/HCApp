@@ -1,6 +1,5 @@
 package me.aflak.heroicuidador.crud;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,19 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import me.aflak.heroicuidador.R;
 
-public class cadastroCuidadorActivity  extends AppCompatActivity {
+public class cadastroIdosoActivity extends AppCompatActivity {
 
     private EditText id;
-    private EditText nome;
-    private EditText email;
-    private EditText idade;
-    private EditText sexo;
-    private EditText senha;
-    private EditText senha2;
-    private EditText altura;
-    private EditText peso;
+    private EditText nomeIdoso;
+    private EditText alturaIdoso;
+    private EditText idadeIdoso;
+    private EditText pesoIdoso;
+    private EditText sexoIdoso;
 
     Conexao db;
 
@@ -29,47 +26,43 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro);
+        setContentView(R.layout.activity_cadastro_idoso);
 
         db = new Conexao(this);
 
-        nome = findViewById(R.id.editNome);
-        email = findViewById(R.id.editEmail);
-        idade = findViewById(R.id.editIdade);
-        sexo = findViewById(R.id.editSexo);
-        altura = findViewById(R.id.editAltura);
-        peso = findViewById(R.id.editPeso);
-        senha = findViewById(R.id.editSenha);
-        senha2 = findViewById(R.id.editSenha2);
+        nomeIdoso = findViewById(R.id.editNomeIdoso);
+        alturaIdoso = findViewById(R.id.editAlturaIdoso);
+        idadeIdoso = findViewById(R.id.editIdadeIdoso);
+        pesoIdoso = findViewById(R.id.editPesoIdoso);
+        sexoIdoso = findViewById(R.id.editSexoIdoso);
 
-        bt_registrar= (Button)findViewById(R.id.bt_registrar_novo);
+
+        bt_registrar= (Button)findViewById(R.id.bt_registrar_novo2);
 
         bt_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cuidador c = new Cuidador();
-                c.setNome(nome.getText().toString());
-                c.setEmail(email.getText().toString());
-                c.setIdade(Integer.parseInt(idade.getText().toString()));
-                c.setAltura(Double.parseDouble(altura.getText().toString()));
-                c.setPeso(Double.parseDouble(peso.getText().toString()));
-                c.setSexo(sexo.getText().toString());
-                c.setSenha(senha.getText().toString());
-                c.setSenha2(senha2.getText().toString());
+                Idoso i = new Idoso();
+                i.setNomeIdoso(nomeIdoso.getText().toString());
+                i.setIdadeIdoso(Integer.parseInt(idadeIdoso.getText().toString()));
+                i.setAlturaIdoso(Double.parseDouble(alturaIdoso.getText().toString()));
+                i.setPesoIdoso(Double.parseDouble(pesoIdoso.getText().toString()));
+                i.setSexoIdoso(sexoIdoso.getText().toString());
+
 
 
 //                if(!senha.equals(senha2)) {
 //                    Toast.makeText(cadastroCuidadorActivity.this, "As duas senhas não correspondem, tente novamente", Toast.LENGTH_SHORT).show();
 //                }else{
-                    long res=db.CriarCuidador(c);
-                    if(res>0){
-                        Toast.makeText(cadastroCuidadorActivity.this,"Cadastro efetuado", Toast.LENGTH_SHORT).show();
-                        Intent tela = new Intent(cadastroCuidadorActivity.this, cadastroIdosoActivity.class);
+                long res=db.CriarIdoso(i);
+                if(res>0){
+                    Toast.makeText(cadastroIdosoActivity.this,"Cadastro efetuado", Toast.LENGTH_SHORT).show();
+                        Intent tela = new Intent(cadastroIdosoActivity.this, LoginActivity.class);
                         startActivity(tela);
-                    } else {
-                        Toast.makeText(cadastroCuidadorActivity.this,"Registro inválido, tente novamente", Toast.LENGTH_SHORT).show();
-                    }
+                } else {
+                    Toast.makeText(cadastroIdosoActivity.this,"Registro inválido, tente novamente", Toast.LENGTH_SHORT).show();
                 }
+            }
 //            }
         });
 
@@ -105,5 +98,4 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
 //
 //        if (senha.equals(senha2) && )
 //    }
-
 }
