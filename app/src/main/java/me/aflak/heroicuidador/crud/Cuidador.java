@@ -10,6 +10,9 @@ public class Cuidador implements Serializable {
     private Integer idade;
     private Double peso;
     private String sexo;
+    private String senha;
+    private String senha2;
+
 
     public Integer getId() {
         return id;
@@ -65,6 +68,22 @@ public class Cuidador implements Serializable {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getSenha2() {
+        return senha2;
+    }
+
+    public void setSenha2(String senha2) {
+        this.senha2 = senha2;
     }
 
     @Override

@@ -6,4 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".crud.LoginActivity">
 
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintTop_toBottomOf="@+id/loginSenha"
+        tools:layout_editor_absoluteX="172dp" />
+
+    <EditText
+        android:id="@+id/editNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nome"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="84dp" />
+
+    <EditText
+        android:id="@+id/loginSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editNome"
+        tools:layout_editor_absoluteX="86dp" />
 </android.support.constraint.ConstraintLayout>

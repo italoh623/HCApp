@@ -25,9 +25,11 @@ public class CuidadorDAO {
         values.put("altura", cuidador.getAltura());
         values.put("idade", cuidador.getIdade());
         values.put("peso", cuidador.getPeso());
+        values.put("senha", cuidador.getSenha());
         values.put("sexo", cuidador.getSexo());
         return banco.insert("cuidador", null, values);
     }
+
 
     public List<Cuidador>obterTodos(){
         List<Cuidador> cuidador = new ArrayList<>();
