@@ -91,7 +91,7 @@
         tools:layout_editor_absoluteY="400dp" />
 
     <EditText
-        android:id="@+id/editNome"
+        android:id="@+id/editPeso"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#0C2A43"

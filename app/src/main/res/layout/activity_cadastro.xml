@@ -11,32 +11,32 @@
         android:id="@+id/textView12"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
         android:foregroundTint="#3F51B5"
-        android:text="Senha"
-        android:textColor="#0C2A43"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/editSexo"
-        app:layout_constraintEnd_toEndOf="@+id/editSexo"
-        app:layout_constraintStart_toStartOf="@+id/editSexo"
-        app:layout_constraintTop_toTopOf="@+id/editSexo" />
-
-    <EditText
-        android:id="@+id/editSexo"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#0C2A43"
-        android:ems="10"
-        android:foregroundTint="#3F51B5"
-        android:inputType="textPassword"
+        android:text="Gênero"
         android:textColor="#0C2A43"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNome" />
+        app:layout_constraintTop_toTopOf="@+id/editSexo" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:foregroundTint="#3F51B5"
+        android:text="Email"
+        android:textColor="#0C2A43"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editEmail" />
 
     <EditText
-        android:id="@+id/editNome"
+        android:id="@+id/editPeso"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
@@ -53,16 +53,17 @@
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="302dp"
+        android:layout_width="300dp"
         android:layout_height="15dp"
+        android:layout_marginStart="10dp"
         android:foregroundTint="#3F51B5"
         android:text="Nome"
         android:textColor="#0C2A43"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/editNome"
-        app:layout_constraintEnd_toEndOf="@+id/editNome"
-        app:layout_constraintStart_toStartOf="@+id/editNome"
-        app:layout_constraintTop_toTopOf="@+id/editNome" />
+        app:layout_constraintBottom_toBottomOf="@+id/editPeso"
+        app:layout_constraintEnd_toEndOf="@+id/editPeso"
+        app:layout_constraintStart_toStartOf="@+id/editPeso"
+        app:layout_constraintTop_toTopOf="@+id/editPeso" />
 
     <Button
         android:id="@+id/button4"
@@ -80,35 +81,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editEmail" />
 
-    <EditText
-        android:id="@+id/editAltura"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#0C2A43"
-        android:ems="10"
-        android:foregroundTint="#3F51B5"
-        android:inputType="textPassword"
-        android:textColor="#0C2A43"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSexo" />
-
     <TextView
         android:id="@+id/textView13"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
         android:foregroundTint="#3F51B5"
-        android:text="Confirme Senha"
+        android:text="Idade"
         android:textColor="#0C2A43"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/editAltura"
-        app:layout_constraintEnd_toEndOf="@+id/editAltura"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editAltura"
-        app:layout_constraintTop_toTopOf="@+id/editAltura"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editIdade" />
 
     <View
         android:id="@+id/view2"
@@ -124,12 +109,41 @@
         android:id="@+id/editEmail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="72dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAltura" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <EditText
+        android:id="@+id/editSexo"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="72dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editPeso" />
+
+    <EditText
+        android:id="@+id/editIdade"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="72dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editSexo" />
 
 </android.support.constraint.ConstraintLayout>

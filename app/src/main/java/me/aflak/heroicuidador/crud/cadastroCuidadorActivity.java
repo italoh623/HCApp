@@ -25,11 +25,11 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        nome = findViewById(R.id.editSexo);
-        email = findViewById(R.id.editSexo);
-        altura = findViewById(R.id.editAltura);
-        idade = findViewById(R.id.editNome);
-        peso = findViewById(R.id.editSexo);
+        nome = findViewById(R.id.editPeso);
+        email = findViewById(R.id.editEmail);
+       // altura = findViewById(R.id.editAltura);
+        idade = findViewById(R.id.editIdade);
+     //   peso = findViewById(R.id.editPeso);
         sexo = findViewById(R.id.editSexo);
 
         dao = new CuidadorDAO(this);
@@ -39,9 +39,9 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
         Cuidador c = new Cuidador();
         c.setNome(nome.getText().toString());
         c.setEmail(email.getText().toString());
-        c.setAltura(Double.parseDouble(altura.getText().toString()));
+       // c.setAltura(Double.parseDouble(altura.getText().toString()));
         c.setIdade(Integer.parseInt(idade.getText().toString()));
-        c.setPeso(Double.parseDouble(peso.getText().toString()));
+        //c.setPeso(Double.parseDouble(peso.getText().toString()));
         c.setSexo(sexo.getText().toString());
         c.setIdade(Integer.parseInt(idade.getText().toString()));
 
