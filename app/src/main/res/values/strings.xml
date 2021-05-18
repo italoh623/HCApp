@@ -26,6 +26,8 @@
     <string name="text_atividade">Activity</string>
     <string name="text_hora_inicial">00:00</string>
     <string name="text_logo_descricao">Logo: Herói Cuidador</string>
+    <string name="text_login">Login</string>
+    <string name="text_cadastro">Sign Up</string>
 
     <string-array name="text_atividades">
         <item>Walk</item>
