@@ -50,8 +50,8 @@ public class Conexao  extends  SQLiteOpenHelper{
         values.put("nomeIdoso", idoso.getNomeIdoso());
         values.put("alturaIdoso", idoso.getAlturaIdoso());
         values.put("idadeIdoso", idoso.getIdadeIdoso());
-        values.put("pesoIdoso", idoso.getPesoIdoso());
         values.put("sexoIdoso", idoso.getSexoIdoso());
+        values.put("pesoIdoso", idoso.getPesoIdoso());
         long result = db.insert("idoso",null,values);
         return result;
     }
