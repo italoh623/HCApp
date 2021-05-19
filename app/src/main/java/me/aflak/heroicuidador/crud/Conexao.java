@@ -45,7 +45,7 @@ public class Conexao  extends  SQLiteOpenHelper{
     }
 
     public long CriarIdoso( Idoso idoso){
-        SQLiteDatabase db =getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("nomeIdoso", idoso.getNomeIdoso());
         values.put("alturaIdoso", idoso.getAlturaIdoso());
@@ -57,9 +57,11 @@ public class Conexao  extends  SQLiteOpenHelper{
     }
 
 
-    public String ValidarLogin(Cuidador Cuidador){
+    public String ValidarLogin(String nome, String senha){
+//        String nome = Cuidador.getNome();
+//        String senha = Cuidador.getSenha();
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM cuidador WHERE nome=? and senha=?", new String[]{});
+        Cursor c = db.rawQuery("SELECT * FROM cuidador WHERE nome=? and senha=?", new String[]{nome, senha});
         if (c.getCount() > 0){
             return "ok";
         }

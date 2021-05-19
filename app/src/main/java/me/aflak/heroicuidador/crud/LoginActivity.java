@@ -16,8 +16,8 @@ public class LoginActivity extends AppCompatActivity {
 
     Button bt_login;
 
-    private EditText nome;
-    private EditText senha;
+//    private EditText loginNome;
+//    private EditText loginSenha;
 
     Conexao db;
 
@@ -26,12 +26,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        nome = findViewById(R.id.editNome);
-        senha = findViewById(R.id.editSenha);
-
         db = new Conexao(this);
 
-        loginNome = (EditText)findViewById(R.id.editNome);
+        loginNome = (EditText)findViewById(R.id.loginNome);
         loginSenha = (EditText)findViewById(R.id.loginSenha);
 
         bt_login = (Button) findViewById(R.id.bt_login);
@@ -39,14 +36,17 @@ public class LoginActivity extends AppCompatActivity {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cuidador c = new Cuidador();
-                c.setNome(nome.getText().toString());
-                c.setSenha(senha.getText().toString());
+//                Cuidador c = new Cuidador();
+                String nome = loginNome.getText().toString();
+                String senha = loginSenha.getText().toString();
+//                Cuidador c = new Cuidador();
+//                c.getNome(nome.getText().toString());
+//                c.setSenha(senha.getText().toString());
 
                 if(!nome.equals("")) {
                     Toast.makeText(LoginActivity.this, "Username em branco", Toast.LENGTH_SHORT).show();
                 }else{
-                    String res=db.ValidarLogin(c);
+                    String res=db.ValidarLogin(nome, senha);
                     if(res.equals("ok")){
                         Toast.makeText(LoginActivity.this,"Login efetuado", Toast.LENGTH_SHORT).show();
                     } else {
