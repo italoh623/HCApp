@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 //                c.getNome(nome.getText().toString());
 //                c.setSenha(senha.getText().toString());
 
-                if(!nome.equals("")) {
+                if(nome.equals("")) {
                     Toast.makeText(LoginActivity.this, "Username em branco", Toast.LENGTH_SHORT).show();
                 }else{
                     String res=db.ValidarLogin(nome, senha);

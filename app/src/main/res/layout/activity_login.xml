@@ -19,13 +19,8 @@
         app:layout_constraintTop_toBottomOf="@+id/loginSenha" />
 
     <EditText
-<<<<<<< HEAD
-        android:id="@+id/editNome"
-        android:layout_width="0dp"
-=======
         android:id="@+id/loginNome"
-        android:layout_width="wrap_content"
->>>>>>> 7e840df157de346cb69affed884c942dd79a58e7
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:autofillHints="username"
@@ -48,13 +43,12 @@
         android:ems="10"
         android:hint="@string/text_input_password"
         android:inputType="textPassword"
-<<<<<<< HEAD
         android:textColor="@color/azul_escuro"
         android:textColorHighlight="@color/azul_escuro"
         android:textColorLink="@color/azul_escuro"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toBottomOf="@+id/editNome" />
+        app:layout_constraintTop_toBottomOf="@+id/loginNome" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -145,8 +139,4 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.97" />
 
-=======
-        app:layout_constraintTop_toBottomOf="@+id/loginNome"
-        tools:layout_editor_absoluteX="86dp" />
->>>>>>> 7e840df157de346cb69affed884c942dd79a58e7
 </android.support.constraint.ConstraintLayout>
