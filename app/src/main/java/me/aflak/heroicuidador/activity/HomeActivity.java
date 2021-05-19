@@ -55,7 +55,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_main);
 
         textViewOperacao = findViewById(R.id.textViewOperacao);
         textViewCalibracao = findViewById(R.id.textViewCalibracao);
