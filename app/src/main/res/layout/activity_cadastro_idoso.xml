@@ -7,94 +7,162 @@
 
     <Button
         android:id="@+id/bt_registrar_novo2"
-        android:layout_width="267dp"
+        android:layout_width="0dp"
         android:layout_height="43dp"
-        android:layout_marginTop="20dp"
-        android:background="#ED4545"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/rounded_button"
         android:onClick="salvar"
-        android:text="Salvar Idoso"
+        android:text="@string/text_cadastro_idoso_botao"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline24"
+        app:layout_constraintStart_toStartOf="@+id/guideline23"
         app:layout_constraintTop_toBottomOf="@+id/editAlturaIdoso" />
 
     <View
         android:id="@+id/view5"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
         android:background="#FFFFFF"
         android:backgroundTint="@color/azul_escuro"
+        app:layout_constraintBottom_toTopOf="@+id/guideline20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editNomeIdoso"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
+        android:hint="@string/text_input_nome"
         android:inputType="textPersonName"
-        android:text="Nome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5" />
-
-    <EditText
-        android:id="@+id/editIdadeIdoso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Idade"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNomeIdoso" />
-
-    <EditText
-        android:id="@+id/editPesoIdoso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Peso"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editIdadeIdoso" />
+        android:textColor="@color/azul_escuro"
+        android:textColorHighlight="@color/azul_escuro"
+        android:textColorLink="@color/azul_escuro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline22"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline21"
+        app:layout_constraintTop_toBottomOf="@+id/textView19"
+        android:autofillHints="name" />
 
     <EditText
         android:id="@+id/editSexoIdoso"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
+        android:hint="@string/text_input_sex"
         android:inputType="textPersonName"
-        android:text="Gênero"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPesoIdoso" />
+        android:textColor="@color/azul_escuro"
+        android:textColorHighlight="@color/azul_escuro"
+        android:textColorLink="@color/azul_escuro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline22"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline21"
+        app:layout_constraintTop_toBottomOf="@+id/editNomeIdoso"
+        android:autofillHints="sex" />
+
+    <EditText
+        android:id="@+id/editIdadeIdoso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/text_input_age"
+        android:inputType="number"
+        android:textColor="@color/azul_escuro"
+        android:textColorHighlight="@color/azul_escuro"
+        android:textColorLink="@color/azul_escuro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline22"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline21"
+        app:layout_constraintTop_toBottomOf="@+id/editSexoIdoso"
+        android:autofillHints="age" />
+
+    <EditText
+        android:id="@+id/editPesoIdoso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/text_input_weight"
+        android:inputType="numberDecimal"
+        android:textColor="@color/azul_escuro"
+        android:textColorHighlight="@color/azul_escuro"
+        android:textColorLink="@color/azul_escuro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline22"
+        app:layout_constraintStart_toStartOf="@+id/guideline21"
+        app:layout_constraintTop_toBottomOf="@+id/editIdadeIdoso"
+        android:autofillHints="weight" />
 
     <EditText
         android:id="@+id/editAlturaIdoso"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Altura"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSexoIdoso" />
+        android:hint="@string/text_input_height"
+        android:inputType="numberDecimal"
+        android:textColor="@color/azul_escuro"
+        android:textColorHighlight="@color/azul_escuro"
+        android:textColorLink="@color/azul_escuro"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline22"
+        app:layout_constraintStart_toStartOf="@+id/guideline21"
+        app:layout_constraintTop_toBottomOf="@+id/editPesoIdoso"
+        android:autofillHints="height" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Informações Idoso"
-        app:layout_constraintBottom_toTopOf="@+id/editNomeIdoso"
+        android:layout_marginTop="32dp"
+        android:text="@string/text_cadastro_idoso"
+        android:textColor="@color/azul_escuro"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
 </android.support.constraint.ConstraintLayout>
