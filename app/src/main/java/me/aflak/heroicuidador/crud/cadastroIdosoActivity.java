@@ -21,7 +21,7 @@ public class cadastroIdosoActivity extends AppCompatActivity {
 
     Conexao db;
 
-    Button bt_registrar;
+    Button bt_registrar2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -37,9 +37,9 @@ public class cadastroIdosoActivity extends AppCompatActivity {
         sexoIdoso = findViewById(R.id.editSexoIdoso);
 
 
-        bt_registrar= (Button)findViewById(R.id.bt_registrar_novo2);
+        bt_registrar2= (Button)findViewById(R.id.bt_registrar_novo2);
 
-        bt_registrar.setOnClickListener(new View.OnClickListener() {
+        bt_registrar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Idoso i = new Idoso();
@@ -50,10 +50,6 @@ public class cadastroIdosoActivity extends AppCompatActivity {
                 i.setSexoIdoso(sexoIdoso.getText().toString());
 
 
-
-//                if(!senha.equals(senha2)) {
-//                    Toast.makeText(cadastroCuidadorActivity.this, "As duas senhas não correspondem, tente novamente", Toast.LENGTH_SHORT).show();
-//                }else{
                 long res=db.CriarIdoso(i);
                 if(res>0){
                     Toast.makeText(cadastroIdosoActivity.this,"Cadastro efetuado", Toast.LENGTH_SHORT).show();
