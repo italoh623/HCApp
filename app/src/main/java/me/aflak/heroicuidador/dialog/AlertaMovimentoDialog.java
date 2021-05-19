@@ -4,16 +4,25 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import me.aflak.heroicuidador.R;
 import me.aflak.heroicuidador.model.Atividade;
 
+import android.widget.VideoView;
+
+
+
 public class AlertaMovimentoDialog extends AppCompatDialogFragment {
+
 
     private TextView textViewInfo;
     private Atividade atividade;
@@ -46,6 +55,16 @@ public class AlertaMovimentoDialog extends AppCompatDialogFragment {
 
         textViewInfo = view.findViewById(R.id.textViewInfo);
         textViewInfo.setText(atividade.getTextoInformativo());
+
+        VideoView videoView = view.findViewById(R.id.LinearLayout);
+        String videoPath = "android.resource://" + getActivity().getPackageName() + ";" + R.raw.videoplayback;
+
+        Uri uri = Uri.parse(videoPath);
+        videoView.setVideoURI(uri);
+
+        MediaController mediaController = new MediaController(getContext());
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
 
         return builder.create();
 
