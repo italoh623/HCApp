@@ -14,6 +14,7 @@
         android:background="@drawable/rounded_button"
         android:text="@string/text_login"
         android:textColor="@android:color/background_light"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toBottomOf="@+id/loginSenha" />
@@ -30,6 +31,7 @@
         android:textColor="@color/azul_escuro"
         android:textColorHighlight="@color/azul_escuro"
         android:textColorLink="@color/azul_escuro"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
@@ -46,6 +48,7 @@
         android:textColor="@color/azul_escuro"
         android:textColorHighlight="@color/azul_escuro"
         android:textColorLink="@color/azul_escuro"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
         app:layout_constraintTop_toBottomOf="@+id/loginNome" />
@@ -127,7 +130,6 @@
         android:drawableLeft="@drawable/ic_baseline_back_cadastro_14"
         android:text="@string/text_back_cadastro"
         android:textColor="@color/vermelho"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10" />

@@ -18,6 +18,7 @@
         android:text="@string/text_cadastro"
         android:textColor="@color/azul_escuro"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bt_entrar"
         app:layout_constraintEnd_toStartOf="@+id/guideline14"
         app:layout_constraintStart_toStartOf="@+id/guideline13" />
@@ -29,6 +30,7 @@
         android:background="@drawable/rounded_button_outlined"
         android:text="@string/text_login"
         android:textColor="@color/vermelho"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toStartOf="@+id/guideline14"
         app:layout_constraintStart_toStartOf="@+id/guideline13" />
