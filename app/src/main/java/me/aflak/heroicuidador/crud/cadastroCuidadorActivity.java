@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import me.aflak.heroicuidador.R;
 
@@ -21,6 +22,7 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
     private EditText senha2;
     private EditText altura;
     private EditText peso;
+    private TextView backLogin;
 
     Conexao db;
 
@@ -41,6 +43,7 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
         peso = findViewById(R.id.editPeso);
         senha = findViewById(R.id.editSenha);
         senha2 = findViewById(R.id.editSenha2);
+        backLogin = (TextView) findViewById(R.id.backLogin);
 
         bt_registrar= (Button)findViewById(R.id.bt_registrar_novo);
 
@@ -71,6 +74,14 @@ public class cadastroCuidadorActivity  extends AppCompatActivity {
                     }
                 }
 //            }
+        });
+
+        backLogin.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent intent = new Intent(cadastroCuidadorActivity.this, LoginActivity.class);
+                 startActivity(intent);
+             }
         });
 
     }
