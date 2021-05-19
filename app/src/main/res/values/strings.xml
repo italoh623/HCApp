@@ -28,6 +28,9 @@
     <string name="text_logo_descricao">Logo: Herói Cuidador</string>
     <string name="text_login">Login</string>
     <string name="text_cadastro">Sign Up</string>
+    <string name="text_input_nome">Name</string>
+    <string name="text_input_password">Password</string>
+    <string name="text_back_cadastro">Create an account</string>
 
     <string-array name="text_atividades">
         <item>Walk</item>
