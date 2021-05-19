@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40sp"
                 android:layout_marginBottom="64sp"
+                android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
                 android:text="@string/text_create_account"
                 android:textColor="@color/azul_escuro"
@@ -53,12 +54,14 @@
                 android:layout_marginTop="8sp"
                 android:layout_marginBottom="8sp"
                 android:ems="10"
+                android:fontFamily="@font/roboto_bold"
                 android:hint="@string/text_input_nome"
                 android:inputType="textPersonName"
                 android:textColor="@color/azul_escuro"
                 android:textColorHighlight="@color/azul_escuro"
                 android:textColorLink="@color/azul_escuro"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autofillHints="name" />
 
             <EditText
                 android:id="@+id/editEmail"
@@ -72,7 +75,8 @@
                 android:textColor="@color/azul_escuro"
                 android:textColorHighlight="@color/azul_escuro"
                 android:textColorLink="@color/azul_escuro"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autofillHints="email" />
 
             <EditText
                 android:id="@+id/editSexo"
@@ -86,7 +90,8 @@
                 android:textColor="@color/azul_escuro"
                 android:textColorHighlight="@color/azul_escuro"
                 android:textColorLink="@color/azul_escuro"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autofillHints="sex" />
 
             <EditText
                 android:id="@+id/editIdade"
@@ -100,7 +105,8 @@
                 android:textColor="@color/azul_escuro"
                 android:textColorHighlight="@color/azul_escuro"
                 android:textColorLink="@color/azul_escuro"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autofillHints="age"/>
 
             <EditText
                 android:id="@+id/editPeso"
@@ -114,7 +120,8 @@
                 android:textColor="@color/azul_escuro"
                 android:textColorHighlight="@color/azul_escuro"
                 android:textColorLink="@color/azul_escuro"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autofillHints="weight" />
 
             <EditText
                 android:id="@+id/editAltura"
@@ -128,7 +135,8 @@
                 android:textColor="@color/azul_escuro"
                 android:textColorHighlight="@color/azul_escuro"
                 android:textColorLink="@color/azul_escuro"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autofillHints="height" />
 
             <EditText
                 android:id="@+id/editSenha"
@@ -142,7 +150,8 @@
                 android:textColor="@color/azul_escuro"
                 android:textColorHighlight="@color/azul_escuro"
                 android:textColorLink="@color/azul_escuro"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autofillHints="password" />
 
             <EditText
                 android:id="@+id/editSenha2"
@@ -156,7 +165,8 @@
                 android:textColor="@color/azul_escuro"
                 android:textColorHighlight="@color/azul_escuro"
                 android:textColorLink="@color/azul_escuro"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autofillHints="password" />
 
             <Button
                 android:id="@+id/bt_registrar_novo"
@@ -177,7 +187,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24sp"
-                android:drawableLeft="@drawable/ic_baseline_arrow_back_14"
+                android:drawableStart="@drawable/ic_baseline_arrow_back_14"
                 android:gravity="center"
                 android:text="@string/text_back_login"
                 android:textColor="@color/vermelho" />

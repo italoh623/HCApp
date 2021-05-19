@@ -127,7 +127,7 @@
         android:id="@+id/backCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_baseline_back_cadastro_14"
+        android:drawableStart="@drawable/ic_baseline_back_cadastro_14"
         android:text="@string/text_back_cadastro"
         android:textColor="@color/vermelho"
         app:layout_constraintBottom_toTopOf="@+id/guideline16"

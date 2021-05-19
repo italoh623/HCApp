@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_bold"
         android:onClick="salvar"
         android:text="@string/text_cadastro"
         android:textColor="@color/azul_escuro"
@@ -28,6 +29,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_button_outlined"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/text_login"
         android:textColor="@color/vermelho"
         android:textStyle="bold"
@@ -37,7 +39,7 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:contentDescription="@string/text_logo_descricao"
         app:layout_constraintEnd_toEndOf="parent"
