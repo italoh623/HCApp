@@ -31,6 +31,14 @@
     <string name="text_input_nome">Name</string>
     <string name="text_input_password">Password</string>
     <string name="text_back_cadastro">Create an account</string>
+    <string name="text_input_email">Email</string>
+    <string name="text_input_weight">Weight</string>
+    <string name="text_input_age">Age</string>
+    <string name="text_input_sex">Sex</string>
+    <string name="text_input_height">Height</string>
+    <string name="text_input_confirm_password">Confirm password</string>
+    <string name="text_create_account">Create your account</string>
+    <string name="text_back_login">Go to login</string>
 
     <string-array name="text_atividades">
         <item>Walk</item>
