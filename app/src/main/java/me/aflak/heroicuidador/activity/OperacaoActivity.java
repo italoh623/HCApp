@@ -116,10 +116,13 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
 
     @Override
     public void onMessage(String message) {
+        System.out.println("entrei aqui");
+        System.out.println(message);
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");
         Date date = new Date();
         String horaAtual = dateFormat.format(date).toString();
-
+        Display(message);
+/*
         String codigo = message.substring(0, 3);
 
         if (codigo.equals("MOV")) {
@@ -142,6 +145,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
         } else {
             Display(message);
         }
+        */
     }
 
     @Override
