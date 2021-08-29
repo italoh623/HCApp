@@ -58,6 +58,7 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(Select.this, HomeActivity.class);
+//                Intent i = new Intent(Select.this, OperacaoActivity.class);
                 i.putExtra("pos", position);
                 if(registered) {
                     unregisterReceiver(mReceiver);

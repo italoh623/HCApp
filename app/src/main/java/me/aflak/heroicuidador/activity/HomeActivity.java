@@ -242,7 +242,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
             System.out.println(movimento);
 
             if (movimento.equals("incorreto")) {
-
+                Display("Movimento Incorreto");
                 for(Atividade atividade : atividades){
                     if (ExtraUtils.isMesmoHorario(atividade.getHorario(), horaAtual)) {
 
@@ -262,6 +262,8 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
                     }
                 }
+            } else if (movimento.equals("analise")) {
+                Display("Analisando Movimento");
             }
         } else {
             Display(message);
