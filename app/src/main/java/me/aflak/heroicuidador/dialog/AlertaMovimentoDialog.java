@@ -50,15 +50,15 @@ public class AlertaMovimentoDialog extends AppCompatDialogFragment {
         textViewInfo = view.findViewById(R.id.textViewInfo);
         textViewInfo.setText(atividade.getTextoInformativo());
 
-        VideoView videoView = view.findViewById(R.id.LinearLayout);
-        String videoPath = "android.resource://" + getActivity().getPackageName() + ";" + R.raw.videoplayback;
-
-        Uri uri = Uri.parse(videoPath);
-        videoView.setVideoURI(uri);
-
-        MediaController mediaController = new MediaController(getContext());
-        videoView.setMediaController(mediaController);
-        mediaController.setAnchorView(videoView);
+//        VideoView videoView = view.findViewById(R.id.LinearLayout);
+//        String videoPath = "android.resource://" + getActivity().getPackageName() + ";" + R.raw.videoplayback;
+//
+//        Uri uri = Uri.parse(videoPath);
+//        videoView.setVideoURI(uri);
+//
+//        MediaController mediaController = new MediaController(getContext());
+//        videoView.setMediaController(mediaController);
+//        mediaController.setAnchorView(videoView);
 
         return builder.create();
 

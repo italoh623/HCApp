@@ -41,14 +41,14 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
 
         IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
         registerReceiver(mReceiver, filter);
-        registered=true;
+        registered = true;
 
         bt = new Bluetooth(this);
         bt.enableBluetooth();
 
-        pull_to_refresh = (PullToRefresh)findViewById(R.id.pull_to_refresh);
-        listView =  (ListView)findViewById(R.id.list);
-        not_found =  (Button) findViewById(R.id.not_in_list);
+        pull_to_refresh = (PullToRefresh) findViewById(R.id.pull_to_refresh);
+        listView = (ListView) findViewById(R.id.list);
+        not_found = (Button) findViewById(R.id.not_in_list);
 
         pull_to_refresh.setListView(listView);
         pull_to_refresh.setOnRefreshListener(this);
@@ -60,9 +60,9 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
                 Intent i = new Intent(Select.this, HomeActivity.class);
 //                Intent i = new Intent(Select.this, OperacaoActivity.class);
                 i.putExtra("pos", position);
-                if(registered) {
+                if (registered) {
                     unregisterReceiver(mReceiver);
-                    registered=false;
+                    registered = false;
                 }
                 startActivity(i);
                 finish();
@@ -83,7 +83,7 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
     @Override
     public void onRefresh() {
         List<String> names = new ArrayList<String>();
-        for (BluetoothDevice d : bt.getPairedDevices()){
+        for (BluetoothDevice d : bt.getPairedDevices()) {
             names.add(d.getName());
         }
 
@@ -93,9 +93,13 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                listView.removeViews(0, listView.getCount());
-                listView.setAdapter(adapter);
-                paired = bt.getPairedDevices();
+                if (listView.getCount() > 0) {
+                    System.out.println(listView);
+                    System.out.println(listView.getCount());
+//                    listView.removeViews(1, listView.getCount());
+                    listView.setAdapter(adapter);
+                    paired = bt.getPairedDevices();
+                }
             }
         });
         pull_to_refresh.refreshComplete();
@@ -104,17 +108,17 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(registered) {
+        if (registered) {
             unregisterReceiver(mReceiver);
-            registered=false;
+            registered = false;
         }
     }
 
-    private void addDevicesToList(){
+    private void addDevicesToList() {
         paired = bt.getPairedDevices();
 
         List<String> names = new ArrayList<>();
-        for (BluetoothDevice d : paired){
+        for (BluetoothDevice d : paired) {
             names.add(d.getName());
         }
 
