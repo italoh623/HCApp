@@ -16,8 +16,6 @@ import android.widget.VideoView;
 import me.aflak.heroicuidador.R;
 import me.aflak.heroicuidador.model.Atividade;
 
-
-
 public class AlertaMovimentoDialog extends AppCompatDialogFragment {
 
     private TextView textViewInfo;

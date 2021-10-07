@@ -164,27 +164,27 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     }
 
     public void prepararAtividades() {
-        Atividade atividade = new Atividade("8:00","Bath");
+        Atividade atividade = new Atividade("8:00","Banho");
         atividade.setMovimentoCorreto(false);
         atividade.setConcluida(true);
         this.atividades.add(atividade);
 
-        atividade = new Atividade("9:00","Breakfast");
+        atividade = new Atividade("9:00","Café da Manhã");
         this.atividades.add(atividade);
 
-        atividade = new Atividade("10:00","Walk");
+        atividade = new Atividade("10:00","Caminhar");
         this.atividades.add(atividade);
 
-        atividade = new Atividade("12:00","Lunch");
+        atividade = new Atividade("12:00","Almoço");
         this.atividades.add(atividade);
 
-        atividade = new Atividade("14:00","Sleep");
+        atividade = new Atividade("14:00","Dormir");
         this.atividades.add(atividade);
 
-        atividade = new Atividade("19:00","Dinner");
+        atividade = new Atividade("19:00","Jantar");
         this.atividades.add(atividade);
 
-        atividade = new Atividade("22:30","Sleep");
+        atividade = new Atividade("22:30","Dormir");
         this.atividades.add(atividade);
     }
 

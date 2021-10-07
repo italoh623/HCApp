@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_cadastro.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/layout/alerta_movimento_dialog.xml" value="0.1828774062816616" />
       </map>
     </option>
