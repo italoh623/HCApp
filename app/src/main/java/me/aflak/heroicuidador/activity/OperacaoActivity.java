@@ -1,4 +1,4 @@
-package me.aflak.heroicuidador.activity;
+ package me.aflak.heroicuidador.activity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -116,9 +116,12 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
 
     @Override
     public void onMessage(String message) {
+        System.out.println("entrei aqui");
+        System.out.println(message);
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");
         Date date = new Date();
         String horaAtual = dateFormat.format(date).toString();
+//        Display(message);
 
         String codigo = message.substring(0, 3);
 
@@ -129,7 +132,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
             Display("Movimento " + movimento);
 
             if (movimento.equals("incorreto")) {
-
+                Display("Movimento Incorreto");
                 for(Atividade atividade : atividades){
                     if (ExtraUtils.isMesmoHorario(atividade.getHorario(), horaAtual)) {
 
@@ -138,6 +141,8 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
 
                     }
                 }
+            } else {
+                Display("Analisando Movimento");
             }
         } else {
             Display(message);

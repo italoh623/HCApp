@@ -83,7 +83,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
 
                 Display("Exercício " + contador_calibracao + ": Tente tocar seus pés com as pontas dos dedos");
 
-                b.send("iniciar_calibracao");
+//                b.send("iniciar_calibracao");
             //}
         //});
 
@@ -132,6 +132,7 @@ public class CalibracaoActivity extends AppCompatActivity implements Bluetooth.C
             @Override
             public void run() {
                 b.send("calibracao");
+                b.send("iniciar_calibracao");
             }
         });
     }
