@@ -10,7 +10,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="text_operacao">Operação</string>
-    <string name="text_home">Home</string>
+    <string name="text_home">Resultados</string>
     <string name="text_calibracao">Calibração</string>
     <string name="text_resetar">Resetar</string>
     <string name="text_iniciar_movimento">Iniciar Movimento</string>
@@ -41,7 +41,8 @@
     <string name="text_back_login">Ir para Login</string>
     <string name="text_cadastro_idoso">Insira os dados do paciente</string>
     <string name="text_cadastro_idoso_botao">Cadastre-se</string>
-
+    <string name="text_resultado">Resultados</string>
+    <string name="text_button_resultado">Receber resultados</string>
     <string-array name="text_atividades">
         <item>Caminhar</item>
         <item>Banho</item>

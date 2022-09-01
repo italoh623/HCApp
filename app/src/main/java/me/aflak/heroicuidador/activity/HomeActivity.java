@@ -46,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
     // Navegação
     private TextView textViewOperacao;
     private TextView textViewCalibracao;
+    private TextView textViewResultados;
 
     // Lista de atividades
     private List<Atividade> atividades;
@@ -59,6 +60,8 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
 
         textViewOperacao = findViewById(R.id.textViewOperacao);
         textViewCalibracao = findViewById(R.id.textViewCalibracao);
+        textViewResultados = findViewById(R.id.textViewResultados);
+
 
         recyclerView = findViewById(R.id.recyclerView);
         buttonAddAtividade = findViewById(R.id.buttonAddAtividade);
@@ -110,6 +113,21 @@ public class HomeActivity extends AppCompatActivity implements Bluetooth.Communi
                 startActivity(intent);
             }
         });
+
+        textViewResultados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b.removeCommunicationCallback();
+                b.disconnect();
+
+                Intent intent = new Intent(getApplicationContext(), ResultadosActivity.class);
+                intent.putExtra("pos", position);
+                intent.putParcelableArrayListExtra("atividades", new ArrayList<Atividade>(atividades));
+
+                startActivity(intent);
+            }
+        });
+
 
         buttonAddAtividade.setOnClickListener(new View.OnClickListener() {
             @Override

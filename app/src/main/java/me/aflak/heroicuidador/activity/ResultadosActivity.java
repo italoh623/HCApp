@@ -1,4 +1,4 @@
- package me.aflak.heroicuidador.activity;
+package me.aflak.heroicuidador.activity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -24,15 +24,16 @@ import me.aflak.heroicuidador.R;
 import me.aflak.heroicuidador.model.Atividade;
 import me.aflak.heroicuidador.model.ExtraUtils;
 
-public class OperacaoActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
+public class ResultadosActivity extends AppCompatActivity implements Bluetooth.CommunicationCallback {
 
     // Bluetooth
     private String name;
     private Bluetooth b;
     private boolean registered = false;
 
-    private TextView textViewLogsComunicacao;
-    private Button buttonResetar;
+    //private TextView textViewLogsComunicacao;
+//    private Button buttonResetar;
+    private Button buttonReceberDados;
 
     private List<Atividade> atividades;
 
@@ -41,8 +42,9 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_operacao);
 
-        textViewLogsComunicacao = findViewById(R.id.textViewLogsComunicacao);
-        buttonResetar = findViewById(R.id.buttonReceberDados);
+       // textViewLogsComunicacao = findViewById(R.id.textViewLogsComunicacao);
+        //buttonResetar = findViewById(R.id.buttonResetar);
+        buttonReceberDados = findViewById(R.id.buttonReceberDados);
 
         // Bluetooth
 
@@ -64,10 +66,10 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
         registered = true;
 
 
-        buttonResetar.setOnClickListener(new View.OnClickListener() {
+        buttonReceberDados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                b.send("resetar");
+                b.send("receber_dados");
             }
         });
 
@@ -80,9 +82,9 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                b.send("operacao");
+                b.send("resutados");
 
-                buttonResetar.setEnabled(false);
+                buttonReceberDados.setEnabled(false);
             }
         });
     }
@@ -92,7 +94,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
         Display("Disconnected!");
         Display("Connecting again...");
 
-        buttonResetar.setEnabled(false);
+        buttonReceberDados.setEnabled(false);
 
         b.connectToDevice(device);
     }
@@ -116,7 +118,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
 
     @Override
     public void onMessage(String message) {
-        System.out.println("entrei aqui");
+       // System.out.println("entrei aqui");
         System.out.println(message);
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");
         Date date = new Date();
@@ -125,7 +127,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
 
         String codigo = message.substring(0, 3);
 
-        if (codigo.equals("MOV")) {
+        if (codigo.equals("RES")) {
             String movimento = message.substring(3);
             System.out.println(movimento);
 
@@ -176,12 +178,12 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
     }
 
     public void Display(final String s) {
-        this.runOnUiThread(new Runnable() {
+/*        this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 textViewLogsComunicacao.setText(s);
             }
-        });
+        });*/
     }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -191,7 +193,7 @@ public class OperacaoActivity extends AppCompatActivity implements Bluetooth.Com
 
             if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
                 final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
-                Intent intent1 = new Intent(OperacaoActivity.this, Select.class);
+                Intent intent1 = new Intent(ResultadosActivity.this, Select.class);
 
                 switch (state) {
                     case BluetoothAdapter.STATE_OFF:

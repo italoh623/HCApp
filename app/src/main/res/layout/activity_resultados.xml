@@ -31,7 +31,7 @@
         android:background="@color/azul_escuro"
         android:gravity="center"
         android:paddingRight="16dp"
-        android:text="@string/text_operacao"
+        android:text="@string/text_resultado"
         android:textAlignment="viewEnd"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -43,7 +43,7 @@
         android:id="@+id/buttonReceberDados"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="560dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/vermelho"
         android:enabled="false"
@@ -51,10 +51,11 @@
         android:paddingTop="16dp"
         android:paddingRight="32dp"
         android:paddingBottom="16dp"
-        android:text="@string/text_resetar"
+        android:text="@string/text_button_resultado"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
