@@ -128,24 +128,11 @@ public class ResultadosActivity extends AppCompatActivity implements Bluetooth.C
         String codigo = message.substring(0, 3);
 
         if (codigo.equals("RES")) {
-            String movimento = message.substring(3);
-            System.out.println(movimento);
+            String dados = message.substring(3);
+            System.out.println(dados);
 
-            Display("Movimento " + movimento);
+            Display("Resultado " + dados);
 
-            if (movimento.equals("incorreto")) {
-                Display("Movimento Incorreto");
-                for(Atividade atividade : atividades){
-                    if (ExtraUtils.isMesmoHorario(atividade.getHorario(), horaAtual)) {
-
-                        atividade.setConcluida(true);
-                        atividade.setMovimentoCorreto(false);
-
-                    }
-                }
-            } else {
-                Display("Analisando Movimento");
-            }
         } else {
             Display(message);
         }
